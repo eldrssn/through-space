@@ -1,0 +1,5 @@
+export { Footer } from './footer'
+export { SearchBar } from './search-bar'
+export { Content } from './content'
+export { Header } from './header'
+export { Loader } from './loader'

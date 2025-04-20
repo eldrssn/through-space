@@ -1,0 +1,78 @@
+include:
+  - component: gitlab.production-dev.ru/tribe/infrastructure/gitlab-ci-components/deploy/hosting-deploy@~latest
+    inputs:
+      project-name: 'iMedia - Gigachat'
+      support-react-router: true
+
+variables:
+  FRONT_PROD_IMAGE_LATEST: ${CI_REGISTRY_IMAGE}:prod-latest
+  FRONT_STAGE_IMAGE_LATEST: ${CI_REGISTRY_IMAGE}:stage-latest
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
+image-build-push:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  after_script:
+    - docker logout $CI_REGISTRY
+  script:
+#    - docker pull $FRONT_PROD_IMAGE_LATEST || true
+#    - docker build --cache-from $FRONT_PROD_IMAGE_LATEST --build-arg MODE=prod -f ./docker/nginx/Dockerfile -t $FRONT_PROD_IMAGE_LATEST --push .
+    - docker pull $FRONT_STAGE_IMAGE_LATEST || true
+    - docker build --cache-from $FRONT_STAGE_IMAGE_LATEST --build-arg MODE=stage -f ./docker/nginx/Dockerfile -t $FRONT_STAGE_IMAGE_LATEST --push .
+  only:
+    - master
+
+release-stage:
+  stage: deploy
+  needs:
+    - image-build-push
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+    - eval $(ssh-agent -s)
+    - echo "$DEV_SERVER_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $STAGE_SERVER_SSH_HOST >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - ssh $DEV_SERVER_SSH_USER@$STAGE_SERVER_SSH_HOST "docker compose -f /opt/frontend/docker-compose.yml up -d --force-recreate --pull always"
+  only:
+    - master
+
+prod build:
+  stage: build
+  image: node:20
+  script:
+    - npm ci
+    - npm run build:production
+  artifacts:
+    expire_in: 10 minutes
+    paths:
+      - dist
+  only:
+    - master
+
+
+#release-prod:
+#  stage: deploy
+#  needs:
+#    - image-build-push
+#  before_script:
+#    - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+#    - eval $(ssh-agent -s)
+#    - echo "$DEV_SERVER_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+#    - mkdir -p ~/.ssh
+#    - chmod 700 ~/.ssh
+#    - ssh-keyscan $PROD_GATEWAY_HOST >> ~/.ssh/known_hosts
+#    - chmod 644 ~/.ssh/known_hosts
+#  script:
+#    - ssh $PROD_SSH_USER@$PROD_GATEWAY_HOST "sudo docker compose -f /opt/frontend/docker-compose.yml up -d --force-recreate --pull always"
+#    - ssh $PROD_SSH_USER@$PROD_GATEWAY_HOST "sudo docker compose -f /opt/gateway/docker-compose.yml up -d --force-recreate --pull always"
+#  only:
+#    - master
+#  when: manual
