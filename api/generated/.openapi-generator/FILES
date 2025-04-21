@@ -1,0 +1,17 @@
+.gitignore
+.npmignore
+.openapi-generator-ignore
+api.ts
+api/image-api.ts
+base.ts
+common.ts
+configuration.ts
+git_push.sh
+index.ts
+models/get-image-by-id404-response.ts
+models/image-by-id-response.ts
+models/image-by-search-query-response.ts
+models/image-resource.ts
+models/images-by-coordinates-response.ts
+models/index.ts
+models/unprocessable.ts
