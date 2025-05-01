@@ -2,15 +2,15 @@ import * as PIXI from 'pixi.js'
 import { gsap } from 'gsap'
 
 import { HEIGHT, MAX_SCALE, PARALLAX_DEPTH_FACTOR, WIDTH } from './constants'
-import { PositionType, PlanetDataType } from './types'
-import { ImageResourceStatusEnum } from '@api'
+import { PositionType } from './types'
+import { IPlanetItem } from '@/models'
 
 const names = ['Альфа', 'Бета', 'Гамма', 'Дельта', 'Эпсилон', 'Дзета', 'Эта', 'Тета']
 
-export const sortingPlanets = (planets: PlanetDataType[]) => [...planets].sort((a, b) => a.z - b.z)
+export const sortingPlanets = (planets: IPlanetItem[]) => [...planets].sort((a, b) => a.z - b.z)
 
-export const generateMockPlanets = (PLANET_COUNT: number): PlanetDataType[] => {
-  const planets: PlanetDataType[] = Array.from({ length: PLANET_COUNT }).map((_, i) => ({
+export const generateMockPlanets = (PLANET_COUNT: number): IPlanetItem[] => {
+  const planets: IPlanetItem[] = Array.from({ length: PLANET_COUNT }).map((_, i) => ({
     // Диапазон X: от -WIDTH/2 до +WIDTH/2
     x: (Math.random() - 0.5) * WIDTH,
 
@@ -26,20 +26,18 @@ export const generateMockPlanets = (PLANET_COUNT: number): PlanetDataType[] => {
     planet_name: names[i % names.length] + '-' + (i + 1),
     id: String(i),
     author: 'Имя пользователя',
-    status: ImageResourceStatusEnum.Approved,
   }))
 
   return sortingPlanets(planets)
 }
 
-// Пути к SVG-файлам звезд
 export const STAR_IMAGES = [
-  new URL('./images/planet-1.svg', import.meta.url).href,
-  new URL('./images/planet-2.svg', import.meta.url).href,
-  new URL('./images/planet-3.svg', import.meta.url).href,
-  new URL('./images/planet-4.svg', import.meta.url).href,
-  new URL('./images/planet-5.svg', import.meta.url).href,
-  new URL('./images/planet-6.svg', import.meta.url).href,
+  '/images/planet-1.svg',
+  '/images/planet-2.svg',
+  '/images/planet-3.svg',
+  '/images/planet-4.svg',
+  '/images/planet-5.svg',
+  '/images/planet-6.svg',
 ]
 
 // Кэш для текстур звезд
@@ -130,11 +128,11 @@ export const createTweenMap = ({
  * @returns Массив планет, которые видимы в текущем вьюпорте
  */
 export const getVisiblePlanets = (
-  planetsList: PlanetDataType[],
+  planetsList: IPlanetItem[],
   position: PositionType,
   scale: number,
   bufferSize: number = 100
-): PlanetDataType[] => {
+): IPlanetItem[] => {
   // Получаем размеры вьюпорта
   const viewportWidth = window.innerWidth
   const viewportHeight = window.innerHeight

@@ -1,8 +1,10 @@
+'use client'
+
 import { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Graphics, Stage } from '@pixi/react'
+import { Application, extend } from '@pixi/react'
 import * as PIXI from 'pixi.js'
 import { gsap } from 'gsap'
-
+import { Graphics, Sprite } from 'pixi.js'
 import { Controls } from '../controls'
 
 import { PositionType } from '../types'
@@ -11,6 +13,11 @@ import { PlanetsContainer } from '../planets-container'
 import { MapProps } from './types'
 import { useDrag, useTouch, useZoom } from '../hooks'
 import { drawBackground } from './styles'
+
+extend({
+  Graphics,
+  Sprite,
+})
 
 export const Map: FC<MapProps> = ({ dimensions, onOpenPopup, planetsList, searchResult }) => {
   const initialPosition = useMemo(
@@ -21,7 +28,7 @@ export const Map: FC<MapProps> = ({ dimensions, onOpenPopup, planetsList, search
     [dimensions]
   )
 
-  const [position, setPosition] = useState<PositionType>(initialPosition)
+  const [position, setPosition] = useState<PositionType>({ x: 900, y: 900 })
   const [scale, setScale] = useState(DEFAULT_SCALE)
 
   const scaleRef = useRef(DEFAULT_SCALE)
@@ -142,34 +149,38 @@ export const Map: FC<MapProps> = ({ dimensions, onOpenPopup, planetsList, search
 
   return (
     <>
-      <Stage
-        width={dimensions.width}
-        height={dimensions.height}
-        options={{
-          backgroundAlpha: 0,
-        }}
-        id="space-container"
-      >
-        <Graphics
-          draw={drawBackground}
-          eventMode="static"
-          pointerdown={handlePointerDown}
-          pointermove={handlePointerMove}
-          pointerup={handlePointerUp}
-          onpointerleave={handlePointerUp}
-          click={handleBackgroundClick}
-          // onwheel={handleWheel}
-          cursor={cursor}
-        />
-        <PlanetsContainer
-          scale={scale}
-          position={position}
-          planetsList={planetsList}
-          onOpenPopup={onOpenPopup}
-          isMapDragging={draggingRef.current}
-          isMapDragged={isDraggedRef.current}
-        />
-      </Stage>
+      <div id="space-container">
+        <Application
+          // width={dimensions.width} height={dimensions.height}
+          width={1200}
+          height={600}
+          backgroundAlpha={0}
+        >
+          <pixiGraphics
+            draw={drawBackground}
+            eventMode="static"
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerLeave={handlePointerUp}
+            onClick={handleBackgroundClick}
+            // onPointerMove={handlePointerMove}
+            // onPointerUp={handlePointerUp}
+            // onPointerLeave={handlePointerUp}
+            // onClick={handleBackgroundClick}
+            // onwheel={handleWheel}
+            cursor={cursor}
+          />
+          <PlanetsContainer
+            scale={scale}
+            position={position}
+            planetsList={planetsList}
+            onOpenPopup={onOpenPopup}
+            isMapDragging={draggingRef.current}
+            isMapDragged={isDraggedRef.current}
+          />
+        </Application>
+      </div>
       <Controls onZoomIn={handleZoomIn} onZoomOut={handleZoomOut} />
     </>
   )

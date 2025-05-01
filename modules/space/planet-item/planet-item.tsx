@@ -1,12 +1,20 @@
+'use client'
+
 import { FC, useState, useRef, useEffect, useCallback } from 'react'
-import { Sprite, Container } from '@pixi/react'
 import * as PIXI from 'pixi.js'
 import { PlanetItemProps } from './types'
 import { getRandomStarTexture } from '../utils'
 import { TooltipPlanet } from '@ui-pixi'
 import { MAX_GOBAL_SCALE, PARALLAX_DEPTH_FACTOR } from '../constants'
+import { extend } from '@pixi/react'
+import { Container, Sprite } from 'pixi.js'
 
 const RADIUS = 1
+
+extend({
+  Container,
+  Sprite,
+})
 
 export const PlanetItem: FC<PlanetItemProps> = ({
   planet,
@@ -49,20 +57,20 @@ export const PlanetItem: FC<PlanetItemProps> = ({
   }, [isMapDragging])
 
   return (
-    <Container
+    <pixiContainer
       x={parallaxX}
       y={parallaxY}
       zIndex={Math.round(z * 100)}
       eventMode="dynamic"
-      mouseover={handleMouseOver}
-      mouseout={handleMouseOut}
-      pointertap={handleClick}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      onPointerTap={handleClick}
       cursor="pointer"
       interactive={!isMapDragging}
     >
-      <Sprite texture={texture.current} anchor={0.5} scale={baseSize / 100} tint={hovered ? 0x999999 : 0xffffff} />
+      <pixiSprite texture={texture.current} anchor={0.5} scale={baseSize / 100} tint={hovered ? 0x999999 : 0xffffff} />
 
-      {showTooltip && (
+      {/* {showTooltip && (
         <TooltipPlanet
           x={0}
           y={-18}
@@ -72,7 +80,7 @@ export const PlanetItem: FC<PlanetItemProps> = ({
           author={author}
           onOpenPopup={handleClick}
         />
-      )}
-    </Container>
+      )} */}
+    </pixiContainer>
   )
 }

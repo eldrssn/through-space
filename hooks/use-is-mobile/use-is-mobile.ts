@@ -5,9 +5,12 @@ import debounce from 'lodash/debounce'
 import { Breakpoints } from '@app/tokens'
 
 export const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(document.body.clientWidth < Breakpoints.DESKTOP)
+  const [isMobile, setIsMobile] = useState<boolean | null>(null)
 
   useEffect(() => {
+    if (isMobile === null) {
+      setIsMobile(document.body.clientWidth < Breakpoints.DESKTOP)
+    }
     const handleWindowResize = debounce(() => {
       setIsMobile(window.innerWidth < Breakpoints.DESKTOP)
     }, 200)

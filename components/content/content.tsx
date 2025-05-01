@@ -3,6 +3,7 @@
 import { FC } from 'react'
 
 import * as S from './content.styled'
+import { useGetPlanets } from '@/hooks'
 
 export const Content: FC = () => {
   const scrollToSpace = () => {
@@ -11,6 +12,10 @@ export const Content: FC = () => {
     if (!spaceBox) return
     spaceBox.scrollIntoView({ block: 'start', behavior: 'smooth' })
   }
+
+  const { stars, isLoading } = useGetPlanets()
+
+  console.log('stars', stars)
 
   return (
     <S.Wrapper>

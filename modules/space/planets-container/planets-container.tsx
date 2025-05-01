@@ -1,9 +1,19 @@
-import { Container, Sprite } from '@pixi/react'
+'use client'
+
 import { FC, useMemo } from 'react'
 import { PlanetsContainerProps } from './types'
 import { PlanetItem } from '../planet-item'
 import { getVisiblePlanets } from '../utils'
 import { useIsMobile } from '@hooks'
+
+import { Container, Graphics, Sprite } from 'pixi.js'
+import { extend } from '@pixi/react'
+
+extend({
+  Container,
+  Graphics,
+  Sprite,
+})
 
 export const PlanetsContainer: FC<PlanetsContainerProps> = ({
   scale,
@@ -20,9 +30,11 @@ export const PlanetsContainer: FC<PlanetsContainerProps> = ({
     [planetsList, position, scale]
   )
 
+  console.log('planetsList', planetsList)
+
   return (
-    <Container sortableChildren={true} zIndex={0} scale={scale} position={position} interactiveChildren={true}>
-      {extraTexture && <Sprite texture={extraTexture} anchor={0.5} />}
+    <pixiContainer sortableChildren={true} zIndex={0} scale={scale} position={position} interactiveChildren={true}>
+      {extraTexture && <pixiSprite texture={extraTexture} anchor={0.5} />}
 
       {visiblePlanets.map((planet) => (
         <PlanetItem
@@ -35,6 +47,6 @@ export const PlanetsContainer: FC<PlanetsContainerProps> = ({
           onOpenPopup={onOpenPopup}
         />
       ))}
-    </Container>
+    </pixiContainer>
   )
 }

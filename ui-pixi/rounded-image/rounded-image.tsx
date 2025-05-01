@@ -2,7 +2,8 @@ import { FC, useEffect, useRef, useState } from 'react'
 import * as PIXI from 'pixi.js'
 import { Container, Graphics, Sprite } from '@pixi/react'
 import { RoundedImageProps } from './types'
-import planetPlaceholder from './images/planet-placeholder-xs.png'
+
+const planetPlaceholder = './images/planet-placeholder-xs.png'
 
 export const RoundedImage: FC<RoundedImageProps> = ({ image, width, height, radius, x, y }) => {
   const spriteRef = useRef<PIXI.Sprite>(null)

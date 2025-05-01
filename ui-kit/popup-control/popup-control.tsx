@@ -7,24 +7,24 @@ export const PopupControl: FC<PopupControlProps> = ({ opened, onClose }) => {
     <S.Container $visible={opened}>
       <S.HeaderBlock>
         <S.CloseButton type="button" onClick={onClose}>
-          <S.CrossImg />
+          {/* <S.CrossImg /> */}
         </S.CloseButton>
       </S.HeaderBlock>
 
       <S.List>
         <S.ListItem>
-          <S.Control1Img />
+          {/* <S.Control1Img /> */}
           <span>Перемещайте карту с&nbsp;помощью пальцев или зажатой кнопкой мыши</span>
         </S.ListItem>
         <S.ListItem>
-          <S.Control2Img />
+          {/* <S.Control2Img /> */}
 
           <span>
             Продвигайтесь по&nbsp;космосу с&nbsp;помощью жеста пальцами или кнопок <a>+</a> и&nbsp;<a>-</a>
           </span>
         </S.ListItem>
         <S.ListItem>
-          <S.Control3Img />
+          {/* <S.Control3Img /> */}
 
           <span>Кликайте на&nbsp;планету, чтобы рассмотреть ее&nbsp;получше</span>
         </S.ListItem>

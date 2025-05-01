@@ -1,24 +1,27 @@
+'use client'
+
 import { PopupPlanet } from '@ui-kit'
 import { useWindowDimensions } from './hooks'
 import { MapWrapper, SpaceContainer } from './space.styled'
-import { useCallback, useEffect, useState } from 'react'
-import { PlanetDataType } from './types'
+import { ComponentType, Suspense, useCallback, useEffect, useRef, useState } from 'react'
+
 import { Map } from './map'
 
 import { SearchBar } from '@components'
 
 import { useGetPlanets } from '@hooks'
-import { ImageResource } from '@api'
+import { IPlanetItem } from '@/models'
+import { getCellTexture, preloadStarTextures } from './utils'
 
-export const Space = () => {
+const Space = () => {
   // const [planetPopupOpened, setPlanetPopupOpened] = useState(false)
   const { dimensions } = useWindowDimensions()
-  const [selectedStar, setSelectedStar] = useState<PlanetDataType | null>(null)
-  const [searchResult, setSearchResult] = useState<ImageResource | null>(null)
+  const [selectedStar, setSelectedStar] = useState<IPlanetItem | null>(null)
+  const [searchResult, setSearchResult] = useState<IPlanetItem | null>(null)
 
   const { planets: planetsList } = useGetPlanets()
 
-  const handleOpenPopup = useCallback((planet: PlanetDataType) => {
+  const handleOpenPopup = useCallback((planet: IPlanetItem) => {
     if (selectedStar && selectedStar.id === planet.id) {
       setSelectedStar(null)
       return
@@ -45,12 +48,21 @@ export const Space = () => {
     return () => clearTimeout(timer)
   }, [searchResult])
 
+  const [isLoaded, setIsLoaded] = useState(false)
+  useEffect(() => {
+    preloadStarTextures(() => {}).then(() => {
+      // setCellTexture(getCellTexture())
+      setIsLoaded(true)
+    })
+  }, [])
+
   return (
     <>
       <SpaceContainer id="space">
-        <SearchBar setSearchResult={setSearchResult} />
+        {/* <SearchBar setSearchResult={setSearchResult} /> */}
+        {/* <Suspense> */}
         <MapWrapper>
-          {planetsList && (
+          {planetsList && isLoaded && (
             <Map
               dimensions={dimensions}
               onOpenPopup={handleOpenPopup}
@@ -59,8 +71,11 @@ export const Space = () => {
             />
           )}
         </MapWrapper>
+        {/* </Suspense> */}
         {selectedStar && <PopupPlanet planet={selectedStar} onClosePopup={handleClosePopup} />}
       </SpaceContainer>
     </>
   )
 }
+
+export default Space

@@ -1,3 +1,5 @@
+'use client'
+
 import { FC, FormEvent, useState } from 'react'
 import { SearchBarProps } from './types'
 import * as S from './search-bar.styled'
@@ -7,7 +9,7 @@ export const SearchBar: FC<SearchBarProps> = ({ setSearchResult }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [notFound, setNotFound] = useState(false)
 
-  const { searchPlanetAsync, isPending, isError } = useGetPlanetByName()
+  const { suggestions, isPending, isError } = useGetPlanetByName(searchTerm)
 
   const handleSearch = async (e: FormEvent) => {
     e.preventDefault()

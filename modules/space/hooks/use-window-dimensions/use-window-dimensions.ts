@@ -4,24 +4,25 @@ import { useIsMobile } from '@hooks'
 
 export const useWindowDimensions = () => {
   const isMobile = useIsMobile()
-  const fontSize = getComputedStyle(document.body).fontSize
 
   const [dimensions, setDimensions] = useState<DimensionsType>({
-    width: window.innerWidth,
-    height: (isMobile ? 720 : 900) * +fontSize.replace('px', ''),
+    width: 0,
+    height: 0,
   })
 
   useEffect(() => {
-    const handleResize = () => {
-      setDimensions((prev) => ({
-        ...prev,
+    const fontSize = parseFloat(getComputedStyle(document.body).fontSize)
+    const updateDimensions = () => {
+      setDimensions({
         width: window.innerWidth,
-      }))
+        height: (isMobile ? 720 : 900) * fontSize,
+      })
     }
 
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+    updateDimensions()
+    window.addEventListener('resize', updateDimensions)
+    return () => window.removeEventListener('resize', updateDimensions)
+  }, [isMobile])
 
   return { dimensions }
 }

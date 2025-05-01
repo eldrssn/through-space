@@ -32,11 +32,12 @@
       "@utils": ["./utils/index"],
       "@models": ["./models/index"],
       "@hooks": ["./hooks/index"],
-      "@router": ["./router/index"],
+      "@modules": ["./modules/index"],
       "@components": ["./components/index"],
       "@tokens": ["./tokens/index"],
       "@images/*": ["./assets/images/*"],
       "@app/*": ["./*"],
+      "@lib": ["./lib"],
       "@constants": ["./constants"]
     }
   },

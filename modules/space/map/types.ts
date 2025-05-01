@@ -1,8 +1,9 @@
-import { DimensionsType, PlanetDataType } from '../types'
+import { IPlanetItem } from '@models'
+import { DimensionsType } from '../types'
 
 export type MapProps = {
   dimensions: DimensionsType
-  onOpenPopup: (planet: PlanetDataType) => void
-  planetsList: PlanetDataType[]
-  searchResult: PlanetDataType | null
+  onOpenPopup: (planet: IPlanetItem) => void
+  planetsList: IPlanetItem[]
+  searchResult: IPlanetItem | null
 }

@@ -1,3 +1,5 @@
+'use client'
+
 import { FC, memo, useCallback, useState } from 'react'
 import { ControlsProps } from './types'
 import * as S from './controls.styled'

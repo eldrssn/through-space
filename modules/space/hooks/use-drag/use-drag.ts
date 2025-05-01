@@ -20,7 +20,7 @@ export const useDrag = ({ initialPosition, position, setPosition }: DragProps) =
     e.preventDefault()
   }, [])
 
-  const handlePointerMove = useCallback((e: React.PointerEvent) => {
+  const handlePointerMove = useCallback((e: PIXI.FederatedPointerEvent) => {
     if (!dragging.current) return
 
     const dx = e.clientX - lastPosition.current.x
