@@ -2,8 +2,6 @@ import styled from 'styled-components'
 import ArrowDownImg from '@images/arrow-down.svg'
 import { Breakpoints } from '@tokens'
 
-// const ArrowDownImg = '@images/arrow-down.svg'
-
 export const Wrapper = styled.section`
   margin: 282rem 0 20rem;
   width: 100%;

@@ -1,2 +1,2 @@
 export { AnimatedPlanets } from './animated-planets'
-export * from './space'
+export { Space } from './space'

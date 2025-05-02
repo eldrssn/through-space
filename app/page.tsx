@@ -1,28 +1,15 @@
 'use client'
 
-import { Content, SpaceWrapper } from '@/components'
+import { Content } from '@/components'
 import * as S from './styled'
-import { AnimatedPlanets } from '@modules'
-import { Suspense } from 'react'
-import dynamic from 'next/dynamic'
-import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
-// import Space from '@/modules/space/space'
-
-// const Space = dynamic(() => import('@/modules/space/space'), {
-//   ssr: false,
-// })
+import { AnimatedPlanets, Space } from '@modules'
 
 export default function Home() {
   return (
     <S.Main>
       <Content />
       <AnimatedPlanets />
-      {/* <Space /> */}
-      <ErrorBoundary errorComponent={() => <div>Canvas error</div>}>
-        {/* <PixiWrapper /> */}
-        {/* <Space /> */}
-        <SpaceWrapper />
-      </ErrorBoundary>
+      <Space />
     </S.Main>
   )
 }

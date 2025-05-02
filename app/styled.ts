@@ -12,11 +12,10 @@ export const Main = styled.main`
   background: ${`url("${bg}") center no-repeat`};
   background-size: cover;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  height: calc(100 * var(--vh));
+  min-height: calc(100 * var(--vh));
   height: 100%;
 
   &::after {

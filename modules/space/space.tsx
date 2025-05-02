@@ -3,17 +3,20 @@
 import { PopupPlanet } from '@ui-kit'
 import { useWindowDimensions } from './hooks'
 import { MapWrapper, SpaceContainer } from './space.styled'
-import { useCallback, useEffect, useState } from 'react'
-
-import { Map } from './map'
+import { Suspense, useCallback, useEffect, useState } from 'react'
 
 import { SearchBar } from '@components'
 
 import { useGetPlanets } from '@hooks'
 import { IPlanetItem } from '@/models'
 import { preloadStarTextures } from './utils'
+import dynamic from 'next/dynamic'
 
-const Space = () => {
+const Map = dynamic(() => import('./map'), {
+  ssr: false,
+})
+
+export const Space = () => {
   // const [planetPopupOpened, setPlanetPopupOpened] = useState(false)
   const { dimensions } = useWindowDimensions()
   const [isLoaded, setIsLoaded] = useState(false)
@@ -56,10 +59,10 @@ const Space = () => {
   }, [])
 
   return (
-    <>
-      <SpaceContainer id="space">
-        <SearchBar setSearchResult={setSearchResult} />
-        <MapWrapper>
+    <SpaceContainer id="space">
+      <SearchBar setSearchResult={setSearchResult} />
+      <MapWrapper>
+        <Suspense>
           {planetsList && isLoaded && (
             <Map
               dimensions={dimensions}
@@ -68,12 +71,10 @@ const Space = () => {
               searchResult={searchResult}
             />
           )}
-        </MapWrapper>
+        </Suspense>
+      </MapWrapper>
 
-        {selectedStar && <PopupPlanet planet={selectedStar} onClosePopup={handleClosePopup} />}
-      </SpaceContainer>
-    </>
+      {selectedStar && <PopupPlanet planet={selectedStar} onClosePopup={handleClosePopup} />}
+    </SpaceContainer>
   )
 }
-
-export default Space

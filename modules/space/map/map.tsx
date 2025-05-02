@@ -162,3 +162,5 @@ export const Map: FC<MapProps> = ({ dimensions, onOpenPopup, planetsList, search
     </>
   )
 }
+
+export default Map
