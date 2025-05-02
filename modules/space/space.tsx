@@ -58,8 +58,7 @@ const Space = () => {
   return (
     <>
       <SpaceContainer id="space">
-        {/* <SearchBar setSearchResult={setSearchResult} /> */}
-
+        <SearchBar setSearchResult={setSearchResult} />
         <MapWrapper>
           {planetsList && isLoaded && (
             <Map

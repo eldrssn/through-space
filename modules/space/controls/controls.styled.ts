@@ -7,13 +7,13 @@ import { Breakpoints } from '@tokens'
 export const Container = styled.div`
   position: absolute;
   height: 59rem;
-  top: 220rem;
+  top: 150rem;
   left: 50%;
   translate: -50%;
   display: flex;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    top: 158rem;
+    top: 128rem;
     height: 41rem;
   }
 `
