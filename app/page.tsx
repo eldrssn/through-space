@@ -7,8 +7,8 @@ import { AnimatedPlanets, Space } from '@modules'
 export default function Home() {
   return (
     <S.Main>
-      <Content />
       <AnimatedPlanets />
+      <Content />
       <Space />
     </S.Main>
   )

@@ -23,11 +23,11 @@ export const Main = styled.main`
     background: ${`url("${sun}") center no-repeat`};
     background-size: cover;
     position: absolute;
-    top: 0;
+    top: 30%;
     left: 50%;
-    translate: -50%;
-    width: 1296rem;
-    height: 662rem;
+    translate: -50% -50%;
+    width: 896rem;
+    height: 896rem;
     pointer-events: none;
   }
   &::before {

@@ -6,7 +6,7 @@ import PlanetSvg2 from '@images/animated-planets/planet-4.svg'
 import PlanetSvg3 from '@images/animated-planets/planet-2.svg'
 import PlanetSvg4 from '@images/animated-planets/planet-1.svg'
 import PlanetSvg5 from '@images/animated-planets/planet-3.svg'
-// import SputnikSvg from './images/animated-planets/sputnik.svg'
+
 import { Breakpoints } from '@tokens'
 
 // Анимация вращения
@@ -91,7 +91,7 @@ export const Wrapper = styled.div`
   height: 1400rem;
   width: 100%;
   position: absolute;
-  top: 0;
+  top: 30%;
   left: 0;
   pointer-events: none;
 

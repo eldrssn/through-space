@@ -3,9 +3,10 @@ import ArrowDownImg from '@images/arrow-down.svg'
 import { Breakpoints } from '@tokens'
 
 export const Wrapper = styled.section`
-  margin: 282rem 0 20rem;
+  padding: 482rem 0 220rem;
   width: 100%;
   z-index: 1;
+  height: calc(100 * var(--vh));
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     margin: 200rem 0 5rem;
@@ -30,6 +31,8 @@ export const Header = styled.h1`
   text-align: center;
   color: #fff;
   margin-bottom: 50rem;
+  -webkit-text-stroke-width: 1rem;
+  -webkit-text-stroke-color: black;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     font-family: var(--second-family);
@@ -46,9 +49,11 @@ export const Description = styled.p`
   font-weight: 400;
   font-size: 24rem;
   text-align: center;
-  color: #fff;
+  color: #000;
   margin: 0 101rem 40rem;
   line-height: 125%;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
 
   a {
     text-decoration: underline;
