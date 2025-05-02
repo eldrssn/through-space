@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 import PlusSvg from '@images/plus-black.svg'
 import MinusSvg from '@images/minus-black.svg'
-import InfoSvg from '@images/info-icon.svg'
 import { Breakpoints } from '@tokens'
 
 export const Container = styled.div`
@@ -52,35 +51,6 @@ export const Button = styled.button`
     &:first-child {
       margin-right: 15rem;
     }
-  }
-`
-
-export const CloseButton = styled.button`
-  cursor: pointer;
-  background-color: transparent;
-`
-
-export const InfoConteiner = styled.div`
-  position: absolute;
-  right: -60rem;
-  top: 50%;
-  translate: 0 -50%;
-
-  @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    right: -44rem;
-  }
-`
-export const InfoButton = styled.button`
-  background-color: transparent;
-  cursor: pointer;
-`
-export const InfoIconImg = styled(InfoSvg)`
-  width: 31rem;
-  height: 31rem;
-
-  @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    width: 20rem;
-    height: 20rem;
   }
 `
 

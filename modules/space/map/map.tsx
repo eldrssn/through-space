@@ -85,22 +85,10 @@ export const Map: FC<MapProps> = ({ dimensions, onOpenPopup, planetsList, search
     tweenUpdateHandler,
   })
 
-  // const handleWheel = useCallback((e: PIXI.FederatedWheelEvent) => {
-  //   if (isPinching) return
-
-  //   const { x, y } = e.global
-  //   const newScale = e.deltaY < 0 ? zoom(1) : zoom(-1)
-  //   animateZoomToPoint(x, y, newScale)
-  // }, [])
-
   useEffect(() => {
     const element = document.querySelector('#space-container') as HTMLElement
-    // const handleWheelPassive = (e: WheelEvent) => e.preventDefault()
 
     if (element) {
-      // element.addEventListener('wheel', handleWheelPassive, { passive: false })
-
-      // Добавляем обработчики событий для сенсорных жестов
       element.addEventListener('touchstart', handleTouchStart, { passive: false })
       element.addEventListener('touchmove', handleTouchMove, { passive: false })
       element.addEventListener('touchend', handleTouchEnd)
@@ -110,7 +98,6 @@ export const Map: FC<MapProps> = ({ dimensions, onOpenPopup, planetsList, search
 
     return () => {
       if (element) {
-        // element.removeEventListener('wheel', handleWheelPassive)
         element.removeEventListener('touchstart', handleTouchStart)
         element.removeEventListener('touchmove', handleTouchMove)
         element.removeEventListener('touchend', handleTouchEnd)
@@ -150,12 +137,7 @@ export const Map: FC<MapProps> = ({ dimensions, onOpenPopup, planetsList, search
   return (
     <>
       <div id="space-container">
-        <Application
-          // width={dimensions.width} height={dimensions.height}
-          width={1200}
-          height={600}
-          backgroundAlpha={0}
-        >
+        <Application width={dimensions.width} height={dimensions.height} backgroundAlpha={0}>
           <pixiGraphics
             draw={drawBackground}
             eventMode="static"
@@ -164,11 +146,6 @@ export const Map: FC<MapProps> = ({ dimensions, onOpenPopup, planetsList, search
             onPointerUp={handlePointerUp}
             onPointerLeave={handlePointerUp}
             onClick={handleBackgroundClick}
-            // onPointerMove={handlePointerMove}
-            // onPointerUp={handlePointerUp}
-            // onPointerLeave={handlePointerUp}
-            // onClick={handleBackgroundClick}
-            // onwheel={handleWheel}
             cursor={cursor}
           />
           <PlanetsContainer

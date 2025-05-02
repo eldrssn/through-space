@@ -22,15 +22,12 @@ export const PlanetsContainer: FC<PlanetsContainerProps> = ({
   extraTexture,
   isMapDragging,
   isMapDragged,
-  onOpenPopup,
 }) => {
   const isMobile = useIsMobile()
   const visiblePlanets = useMemo(
     () => getVisiblePlanets(planetsList, position, scale, isMobile ? 100 : 200),
     [planetsList, position, scale]
   )
-
-  console.log('planetsList', planetsList)
 
   return (
     <pixiContainer sortableChildren={true} zIndex={0} scale={scale} position={position} interactiveChildren={true}>
@@ -44,7 +41,6 @@ export const PlanetsContainer: FC<PlanetsContainerProps> = ({
           isMapDragging={isMapDragging}
           isMapDragged={isMapDragged}
           globalPosition={position}
-          onOpenPopup={onOpenPopup}
         />
       ))}
     </pixiContainer>

@@ -8,14 +8,6 @@ export const nameStyles = new PIXI.TextStyle({
   wordWrapWidth: 105,
 })
 
-export const autorStyles = new PIXI.TextStyle({
-  fontSize: 7,
-  fill: '#FFFFFF',
-  align: 'center',
-  wordWrap: true,
-  wordWrapWidth: 105,
-})
-
 export const drawBackground = (g: PIXI.Graphics) => {
   g.clear()
   // Основной фон

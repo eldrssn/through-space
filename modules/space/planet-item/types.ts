@@ -1,10 +1,10 @@
-import { PositionType, PlanetDataType } from '../types'
+import { IPlanetItem } from '@/models'
+import { PositionType } from '../types'
 
 export type PlanetItemProps = {
-  planet: PlanetDataType
+  planet: IPlanetItem
   globalScale: number
   globalPosition: PositionType
-  onOpenPopup: (planet: PlanetDataType) => void
   isMapDragging: boolean
   isMapDragged?: boolean
 }

@@ -3,7 +3,7 @@
 import { PopupPlanet } from '@ui-kit'
 import { useWindowDimensions } from './hooks'
 import { MapWrapper, SpaceContainer } from './space.styled'
-import { ComponentType, Suspense, useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { Map } from './map'
 
@@ -11,11 +11,12 @@ import { SearchBar } from '@components'
 
 import { useGetPlanets } from '@hooks'
 import { IPlanetItem } from '@/models'
-import { getCellTexture, preloadStarTextures } from './utils'
+import { preloadStarTextures } from './utils'
 
 const Space = () => {
   // const [planetPopupOpened, setPlanetPopupOpened] = useState(false)
   const { dimensions } = useWindowDimensions()
+  const [isLoaded, setIsLoaded] = useState(false)
   const [selectedStar, setSelectedStar] = useState<IPlanetItem | null>(null)
   const [searchResult, setSearchResult] = useState<IPlanetItem | null>(null)
 
@@ -48,10 +49,8 @@ const Space = () => {
     return () => clearTimeout(timer)
   }, [searchResult])
 
-  const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() => {
     preloadStarTextures(() => {}).then(() => {
-      // setCellTexture(getCellTexture())
       setIsLoaded(true)
     })
   }, [])
@@ -60,7 +59,7 @@ const Space = () => {
     <>
       <SpaceContainer id="space">
         {/* <SearchBar setSearchResult={setSearchResult} /> */}
-        {/* <Suspense> */}
+
         <MapWrapper>
           {planetsList && isLoaded && (
             <Map
@@ -71,7 +70,7 @@ const Space = () => {
             />
           )}
         </MapWrapper>
-        {/* </Suspense> */}
+
         {selectedStar && <PopupPlanet planet={selectedStar} onClosePopup={handleClosePopup} />}
       </SpaceContainer>
     </>

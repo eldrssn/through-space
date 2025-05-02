@@ -16,14 +16,8 @@ extend({
   Sprite,
 })
 
-export const PlanetItem: FC<PlanetItemProps> = ({
-  planet,
-  globalScale,
-  isMapDragging,
-  globalPosition,
-  onOpenPopup,
-}) => {
-  const { x, y, z, planet_name, compressed_image_path, author } = planet
+export const PlanetItem: FC<PlanetItemProps> = ({ planet, globalScale, isMapDragging, globalPosition }) => {
+  const { x, y, z, planet_name } = planet
 
   const [hovered, setHovered] = useState(false)
 
@@ -46,8 +40,8 @@ export const PlanetItem: FC<PlanetItemProps> = ({
   }, [globalScale])
 
   const handleClick = useCallback(() => {
-    onOpenPopup(planet)
-  }, [onOpenPopup])
+    // onOpenPopup(planet)
+  }, [])
 
   const handleMouseOut = useCallback(() => setHovered(false), [])
   const handleMouseOver = useCallback(() => {
@@ -70,17 +64,7 @@ export const PlanetItem: FC<PlanetItemProps> = ({
     >
       <pixiSprite texture={texture.current} anchor={0.5} scale={baseSize / 100} tint={hovered ? 0x999999 : 0xffffff} />
 
-      {/* {showTooltip && (
-        <TooltipPlanet
-          x={0}
-          y={-18}
-          scale={globalScale / 100}
-          image={compressed_image_path}
-          planetName={planet_name}
-          author={author}
-          onOpenPopup={handleClick}
-        />
-      )} */}
+      {showTooltip && <TooltipPlanet x={0} y={-18} scale={globalScale / 100} planetName={planet_name} />}
     </pixiContainer>
   )
 }
