@@ -10,8 +10,10 @@ export const SpaceContainer = styled.div`
   transform: translateZ(0);
   padding-top: 20rem;
   width: 100%;
-  height: 900rem;
+  /* height: 900rem; */
   z-index: 1;
+  height: calc(100 * var(--vh));
+  max-height: 1100rem;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     height: 720rem;

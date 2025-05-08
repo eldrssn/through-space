@@ -32,12 +32,15 @@ export const generateMockPlanets = (PLANET_COUNT: number): IPlanetItem[] => {
 }
 
 export const STAR_IMAGES = [
-  '/images/planet-1.svg',
-  '/images/planet-2.svg',
-  '/images/planet-3.svg',
-  '/images/planet-4.svg',
-  '/images/planet-5.svg',
-  '/images/planet-6.svg',
+  '/images/map-planets/planet-1.png',
+  '/images/map-planets/planet-2.png',
+  '/images/map-planets/planet-3.png',
+  '/images/map-planets/planet-4.png',
+  '/images/map-planets/planet-5.png',
+  '/images/map-planets/planet-6.png',
+  '/images/map-planets/planet-7.png',
+  '/images/map-planets/planet-8.png',
+  '/images/map-planets/planet-9.png',
 ]
 
 // Кэш для текстур звезд

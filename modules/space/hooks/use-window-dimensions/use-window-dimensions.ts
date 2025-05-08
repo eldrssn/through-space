@@ -15,7 +15,7 @@ export const useWindowDimensions = () => {
     const updateDimensions = () => {
       setDimensions({
         width: window.innerWidth,
-        height: (isMobile ? 720 : 900) * fontSize,
+        height: (isMobile ? 720 : 1100) * fontSize,
       })
     }
 

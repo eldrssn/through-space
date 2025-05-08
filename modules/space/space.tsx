@@ -5,7 +5,7 @@ import { useWindowDimensions } from './hooks'
 import { MapWrapper, SpaceContainer } from './space.styled'
 import { Suspense, useCallback, useEffect, useState } from 'react'
 
-import { SearchBar } from '@components'
+// import { SearchBar } from '@components'
 
 import { useGetPlanets } from '@hooks'
 import { IPlanetItem } from '@/models'
@@ -60,7 +60,7 @@ export const Space = () => {
 
   return (
     <SpaceContainer id="space">
-      <SearchBar setSearchResult={setSearchResult} />
+      {/* <SearchBar setSearchResult={setSearchResult} /> */}
       <MapWrapper>
         <Suspense>
           {planetsList && isLoaded && (

@@ -7,6 +7,7 @@ export const Wrapper = styled.section`
   width: 100%;
   z-index: 1;
   height: calc(100 * var(--vh));
+  max-height: 1100rem;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     margin: 200rem 0 5rem;

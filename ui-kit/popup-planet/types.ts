@@ -1,7 +1,7 @@
-import { PlanetDataType } from '@app/modules/space/types'
+import { IPlanetItem } from '@/models'
 
 export interface PopupPlanetProps {
   // opened: boolean
   onClosePopup: () => void
-  planet: Partial<PlanetDataType>
+  planet: Partial<IPlanetItem>
 }

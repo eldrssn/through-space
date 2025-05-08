@@ -33,14 +33,14 @@ export const Main = styled.main`
   &::before {
     content: '';
     background: ${`url("${noise}") center repeat`};
-    opacity: 0.15;
+    background-size: 100rem;
+
     z-index: 100;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1;
     pointer-events: none;
   }
 

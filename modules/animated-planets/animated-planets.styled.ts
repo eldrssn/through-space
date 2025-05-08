@@ -1,11 +1,11 @@
 import styled, { keyframes } from 'styled-components'
 import OrgbitSvg from '@images/animated-planets/orbit.svg'
 
-import PlanetSvg1 from '@images/animated-planets/planet-5.svg'
-import PlanetSvg2 from '@images/animated-planets/planet-4.svg'
-import PlanetSvg3 from '@images/animated-planets/planet-2.svg'
-import PlanetSvg4 from '@images/animated-planets/planet-1.svg'
-import PlanetSvg5 from '@images/animated-planets/planet-3.svg'
+const planetSvg1 = '/images/animated-planets/planet-5.png'
+const planetSvg2 = '/images/animated-planets/planet-4.png'
+const planetSvg3 = '/images/animated-planets/planet-2.png'
+const planetSvg4 = '/images/animated-planets/planet-1.png'
+const planetSvg5 = '/images/animated-planets/planet-3.png'
 
 import { Breakpoints } from '@tokens'
 
@@ -19,39 +19,47 @@ const rotate = keyframes`
   }
 `
 
-export const Planet1 = styled(PlanetSvg1)`
+export const Planet1 = styled.div`
   position: absolute;
   bottom: 0;
   left: 50%;
-  translate: -50% 70%;
+  translate: -50% 50%;
   width: 41rem;
-  height: 69rem;
+  height: 41rem;
+  background: ${`url("${planetSvg1}") center no-repeat`};
+  background-size: contain;
+
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 12rem;
     height: 20rem;
   }
 `
 
-export const Planet2 = styled(PlanetSvg2)`
+export const Planet2 = styled.div`
   position: absolute;
   bottom: 0;
   left: 50%;
-  translate: -50% 70%;
+  translate: -50% 50%;
   width: 90rem;
-  height: 164rem;
+  height: 90rem;
+  background: ${`url("${planetSvg2}") center no-repeat`};
+  background-size: contain;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 26rem;
     height: 48rem;
   }
 `
-export const Planet3 = styled(PlanetSvg3)`
+export const Planet3 = styled.div`
   position: absolute;
   bottom: 0;
   left: 50%;
-  translate: -50% 70%;
+  translate: -50% 50%;
   width: 179rem;
-  height: 324rem;
+  height: 179rem;
+
+  background: ${`url("${planetSvg3}") center no-repeat`};
+  background-size: contain;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 52rem;
@@ -59,13 +67,15 @@ export const Planet3 = styled(PlanetSvg3)`
   }
 `
 
-export const Planet4 = styled(PlanetSvg4)`
+export const Planet4 = styled.div`
   position: absolute;
   bottom: 0;
   left: 50%;
-  translate: -50% 70%;
+  translate: -50% 50%;
   width: 133rem;
-  height: 239rem;
+  height: 133rem;
+  background: ${`url("${planetSvg4}") center no-repeat`};
+  background-size: contain;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 38rem;
@@ -73,13 +83,15 @@ export const Planet4 = styled(PlanetSvg4)`
   }
 `
 
-export const Planet5 = styled(PlanetSvg5)`
+export const Planet5 = styled.div`
   position: absolute;
   bottom: 0;
   left: 50%;
-  translate: -50% 70%;
+  translate: -50% 50%;
   width: 254rem;
-  height: 460rem;
+  height: 254rem;
+  background: ${`url("${planetSvg5}") center no-repeat`};
+  background-size: contain;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 74rem;
