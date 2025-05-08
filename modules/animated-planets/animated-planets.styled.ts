@@ -6,7 +6,7 @@ const planetSvg2 = '/images/animated-planets/planet-4.png'
 const planetSvg3 = '/images/animated-planets/planet-2.png'
 const planetSvg4 = '/images/animated-planets/planet-1.png'
 const planetSvg5 = '/images/animated-planets/planet-3.png'
-
+const sputnikImg = '/images/animated-planets/sputnik.png'
 import { Breakpoints } from '@tokens'
 
 // Анимация вращения
@@ -216,28 +216,10 @@ export const Spitnik = styled.span`
   left: -100%;
   width: 60rem;
   height: 60rem;
-  background-color: #d9d9d9;
-  border-radius: 50%;
-
-  @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    width: 20rem;
-    height: 20rem;
-  }
-`
-
-export const SpitnikLight = styled.span`
-  display: block;
-  position: absolute;
-  bottom: -100%;
-  left: -100%;
-  width: 60rem;
-  height: 60rem;
-  border-radius: 50%;
-  background: radial-gradient(
-    74.48% 61.07% at 48.94% 70.28%,
-    rgb(52, 56, 58) 59.13461446762085%,
-    rgb(255, 255, 255) 100%
-  );
+  /* background-color: #d9d9d9; */
+  /* border-radius: 50%; */
+  background: ${`url("${sputnikImg}") center no-repeat`};
+  background-size: cover;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 20rem;
@@ -250,10 +232,6 @@ export const SputnikBox1 = styled(SputnikBox)`
   animation-direction: reverse;
 `
 export const Spitnik1 = styled(Spitnik)``
-
-export const Spitnik1Light = styled(SpitnikLight)`
-  animation: ${rotate} ${70 / 3.14159265359 + 35 / 3.14159265359}s linear infinite;
-`
 
 export const SputnikBox2 = styled(SputnikBox)`
   animation: ${rotate} 30s linear infinite;
@@ -271,16 +249,6 @@ export const Spitnik2 = styled(Spitnik)`
   width: 30rem;
   height: 30rem;
 
-  @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    width: 9rem;
-    height: 9rem;
-  }
-`
-
-export const Spitnik2Light = styled(SpitnikLight)`
-  width: 30rem;
-  height: 30rem;
-  animation: ${rotate} ${60 / 3.14159265359 + 30 / 3.14159265359}s linear infinite;
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 9rem;
     height: 9rem;
@@ -314,19 +282,6 @@ export const Spitnik3 = styled(Spitnik)`
   }
 `
 
-export const Spitnik3Light = styled(SpitnikLight)`
-  width: 20rem;
-  height: 20rem;
-  bottom: unset;
-  top: -100%;
-  animation: ${rotate} ${60 / 3.14159265359 + 30 / 3.14159265359}s linear infinite;
-
-  @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    width: 6rem;
-    height: 6rem;
-  }
-`
-
 export const SputnikBox4 = styled(SputnikBox)`
   bottom: 0;
   right: 50%;
@@ -351,20 +306,6 @@ export const Spitnik4 = styled(Spitnik)`
   bottom: unset;
   top: 100%;
   left: 100%;
-
-  @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    width: 4rem;
-    height: 4rem;
-  }
-`
-
-export const Spitnik4Light = styled(SpitnikLight)`
-  width: 15rem;
-  height: 15rem;
-  bottom: unset;
-  top: 100%;
-  left: 100%;
-  animation: ${rotate} ${60 / 3.14159265359 + 30 / 3.14159265359}s linear infinite;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 4rem;
