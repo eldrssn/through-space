@@ -18,7 +18,7 @@ export const Conteiner = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1112rem;
+  width: 1412rem;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 100%;
@@ -27,7 +27,7 @@ export const Conteiner = styled.div`
 export const Header = styled.h1`
   font-family: var(--second-family);
   font-weight: 500;
-  font-size: 70rem;
+  font-size: 120rem;
   text-transform: uppercase;
   text-align: center;
   color: #fff;
