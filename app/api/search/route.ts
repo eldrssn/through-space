@@ -8,6 +8,8 @@ export async function GET(req: NextRequest) {
   const fileContents = await fs.readFile(filePath, 'utf-8')
   const planets = JSON.parse(fileContents)
 
-  const results = planets.filter((star: { name: string }) => star.name.toLowerCase().includes(query))
+  const results = planets
+    .filter((star: { planet_name: string }) => star.planet_name.toLowerCase().includes(query))
+    .slice(0, 5)
   return NextResponse.json(results)
 }

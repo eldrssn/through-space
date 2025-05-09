@@ -5,7 +5,7 @@ import { useWindowDimensions } from './hooks'
 import { MapWrapper, SpaceContainer } from './space.styled'
 import { Suspense, useCallback, useEffect, useState } from 'react'
 
-// import { SearchBar } from '@components'
+import { SearchBar } from '@components'
 
 import { useGetPlanets } from '@hooks'
 import { IPlanetItem } from '@/models'
@@ -17,7 +17,6 @@ const Map = dynamic(() => import('./map'), {
 })
 
 export const Space = () => {
-  // const [planetPopupOpened, setPlanetPopupOpened] = useState(false)
   const { dimensions } = useWindowDimensions()
   const [isLoaded, setIsLoaded] = useState(false)
   const [selectedStar, setSelectedStar] = useState<IPlanetItem | null>(null)
@@ -32,7 +31,6 @@ export const Space = () => {
     }
 
     setSelectedStar(planet)
-    // setPlanetPopupOpened(true)
   }, [])
 
   const handleClosePopup = useCallback(() => {
@@ -45,7 +43,6 @@ export const Space = () => {
     if (!searchResult) return
 
     const timer = setTimeout(() => {
-      handleOpenPopup(searchResult)
       clearSearchResult()
     }, 1000)
 
@@ -60,7 +57,7 @@ export const Space = () => {
 
   return (
     <SpaceContainer id="space">
-      {/* <SearchBar setSearchResult={setSearchResult} /> */}
+      <SearchBar setSearchResult={setSearchResult} />
       <MapWrapper>
         <Suspense>
           {planetsList && isLoaded && (

@@ -2,9 +2,8 @@ import { Breakpoints } from '@tokens'
 import styled, { css } from 'styled-components'
 
 export const SearchContainer = styled.form`
-  width: 891rem;
+  width: 291rem;
   margin: 0 auto;
-  position: relative;
   position: absolute;
   top: 50rem;
   z-index: 1;
@@ -44,29 +43,31 @@ export const SearchInput = styled.input`
   }
 `
 
-export const SearchButton = styled.button`
+export const ClearButton = styled.button<{ $visible: boolean }>`
   position: absolute;
-  right: 10rem;
-  top: 10rem;
+  opacity: ${({ $visible }) => ($visible ? 1 : 0)};
+  right: 16rem;
+  top: 22rem;
+  /* translate: 0 -50%; */
   border: none;
   cursor: pointer;
   transition:
     border-color 0.2s ease,
     background 0.2s ease,
     scale 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    opacity 0.2s;
   border: 3rem solid #1eeeae;
   border-radius: 12rem;
-  padding: 10rem 35rem;
-  width: 145rem;
-  height: 43rem;
+  width: 20rem;
+  height: 20rem;
   box-shadow: 0 2rem 12rem 0 rgba(30, 238, 174, 0.55);
   background: #1eeeae;
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 18rem;
+  font-size: 12rem;
   color: #1b1f22;
-  will-change: transform;
+  padding: 0;
 
   &:hover {
     border-color: #4affc7;
@@ -89,7 +90,7 @@ export const SearchButton = styled.button`
 
 export const ErrorMessage = styled.div<{ $visible: boolean }>`
   opacity: 0;
-  color: #f56565;
+  color: #1eeeae;
   margin-top: 12rem;
   text-align: center;
   font-size: 16rem;
@@ -113,5 +114,57 @@ export const ErrorMessage = styled.div<{ $visible: boolean }>`
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     font-size: 14rem;
+  }
+`
+
+export const ResultList = styled.div<{ $visible: boolean }>`
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  top: 75%;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(15rem);
+  -webkit-backdrop-filter: blur(15rem);
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1rem solid #1eeeae;
+  border-radius: 12rem;
+  padding: 5rem 0;
+  overflow: hidden;
+  min-height: auto;
+  transition: all 0.4s;
+
+  ${({ $visible }) =>
+    $visible &&
+    css`
+      animation: fadeIn 0.3s ease forwards;
+    `}
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`
+
+export const ResultItem = styled.div`
+  min-height: 40rem;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16rem;
+  color: #1eeeae;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  padding: 10rem 10rem 10rem 25rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 `

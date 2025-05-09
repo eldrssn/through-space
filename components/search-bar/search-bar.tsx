@@ -1,57 +1,60 @@
 'use client'
 
-import { FC, FormEvent, useState } from 'react'
+import { FC, useState } from 'react'
 import { SearchBarProps } from './types'
 import * as S from './search-bar.styled'
-import { useGetPlanetByName } from '@hooks'
+import { useDebounce, useGetPlanetByName } from '@hooks'
+import { IPlanetItem } from '@/models'
 
 export const SearchBar: FC<SearchBarProps> = ({ setSearchResult }) => {
   const [searchTerm, setSearchTerm] = useState('')
+  const [isPlanetChoosen, setIsPlanetChoosen] = useState(false)
   const [notFound, setNotFound] = useState(false)
 
-  const { suggestions, isPending, isError } = useGetPlanetByName(searchTerm)
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
+  const { suggestions, isError } = useGetPlanetByName(debouncedSearchTerm)
 
-  const handleSearch = async (e: FormEvent) => {
-    e.preventDefault()
-    if (!searchTerm.trim()) return
-
-    try {
-      const result = await searchPlanetAsync(searchTerm)
-
-      if (result?.data) {
-        setSearchResult(result.data)
-        setNotFound(false)
-      } else {
-        setSearchResult(null)
-        setNotFound(true)
-      }
-    } catch (err) {
-      setSearchResult(null)
-      setNotFound(true)
-    }
-  }
+  const handleClearSearchTerm = () => setSearchTerm('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsPlanetChoosen(false)
     setSearchTerm(e.target.value)
     if (notFound) {
       setNotFound(false)
     }
   }
 
+  const handleClickResultItem = (planet: IPlanetItem) => {
+    setSearchResult(planet)
+    setSearchTerm(planet.planet_name)
+    setIsPlanetChoosen(true)
+  }
+
+  const isErrorMessageVisible = isError || (suggestions.length === 0 && !!debouncedSearchTerm)
+  const isResultsVisible = suggestions.length > 0 && !isPlanetChoosen
+
   return (
-    <S.SearchContainer onSubmit={handleSearch}>
+    <S.SearchContainer>
       <S.SearchInput
         type="text"
-        placeholder="Введите имя планеты"
+        placeholder="Enter the name of the planet"
         value={searchTerm}
         onChange={handleChange}
-        disabled={isPending}
       />
-      <S.SearchButton type="submit" disabled={isPending} onClick={() => ym(101004048, 'reachGoal', 'click_search')}>
-        {isPending ? 'Поиск...' : 'Найти'}
-      </S.SearchButton>
 
-      <S.ErrorMessage $visible={isError}>Планета не найдена, попробуйте еще раз.</S.ErrorMessage>
+      <S.ClearButton type="button" $visible={!!searchTerm} onClick={handleClearSearchTerm}>
+        x
+      </S.ClearButton>
+
+      <S.ErrorMessage $visible={isErrorMessageVisible}>Planet not found, try again.</S.ErrorMessage>
+
+      <S.ResultList $visible={isResultsVisible}>
+        {suggestions?.map((suggestion) => (
+          <S.ResultItem key={suggestion.id} onClick={() => handleClickResultItem(suggestion)}>
+            {suggestion.planet_name}
+          </S.ResultItem>
+        ))}
+      </S.ResultList>
     </S.SearchContainer>
   )
 }
