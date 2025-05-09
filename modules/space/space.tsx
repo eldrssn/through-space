@@ -1,16 +1,16 @@
 'use client'
 
-import { PopupPlanet } from '@ui-kit'
 import { useWindowDimensions } from './hooks'
 import { MapWrapper, SpaceContainer } from './space.styled'
-import { Suspense, useCallback, useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 
 import { SearchBar } from '@components'
 
 import { useGetPlanets } from '@hooks'
-import { IPlanetItem } from '@/models'
+
 import { preloadStarTextures } from './utils'
 import dynamic from 'next/dynamic'
+import { useSpaceStore } from './store'
 
 const Map = dynamic(() => import('./map'), {
   ssr: false,
@@ -18,37 +18,21 @@ const Map = dynamic(() => import('./map'), {
 
 export const Space = () => {
   const { dimensions } = useWindowDimensions()
+  const { selectedPlanet, setSelectedPlanet, clearSelectedPlanet } = useSpaceStore()
   const [isLoaded, setIsLoaded] = useState(false)
-  const [selectedStar, setSelectedStar] = useState<IPlanetItem | null>(null)
-  const [searchResult, setSearchResult] = useState<IPlanetItem | null>(null)
-
   const { planets: planetsList } = useGetPlanets()
 
-  const handleOpenPopup = useCallback((planet: IPlanetItem) => {
-    if (selectedStar && selectedStar.id === planet.id) {
-      setSelectedStar(null)
-      return
-    }
-
-    setSelectedStar(planet)
-  }, [])
-
-  const handleClosePopup = useCallback(() => {
-    setSelectedStar(null)
-  }, [])
-
-  const clearSearchResult = () => setSearchResult(null)
-
   useEffect(() => {
-    if (!searchResult) return
+    if (!selectedPlanet) return
 
     const timer = setTimeout(() => {
-      clearSearchResult()
+      clearSelectedPlanet()
     }, 1000)
 
     return () => clearTimeout(timer)
-  }, [searchResult])
+  }, [selectedPlanet])
 
+  // TODO: вынести в стор и добавить лоадер
   useEffect(() => {
     preloadStarTextures(() => {}).then(() => {
       setIsLoaded(true)
@@ -57,21 +41,14 @@ export const Space = () => {
 
   return (
     <SpaceContainer id="space">
-      <SearchBar setSearchResult={setSearchResult} />
+      <SearchBar setSelectedPlanet={setSelectedPlanet} />
       <MapWrapper>
         <Suspense>
           {planetsList && isLoaded && (
-            <Map
-              dimensions={dimensions}
-              onOpenPopup={handleOpenPopup}
-              planetsList={planetsList}
-              searchResult={searchResult}
-            />
+            <Map dimensions={dimensions} planetsList={planetsList} searchResult={selectedPlanet} />
           )}
         </Suspense>
       </MapWrapper>
-
-      {selectedStar && <PopupPlanet planet={selectedStar} onClosePopup={handleClosePopup} />}
     </SpaceContainer>
   )
 }

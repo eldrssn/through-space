@@ -19,7 +19,7 @@ extend({
   Sprite,
 })
 
-export const Map: FC<MapProps> = ({ dimensions, onOpenPopup, planetsList, searchResult }) => {
+export const Map: FC<MapProps> = ({ dimensions, planetsList, searchResult }) => {
   const initialPosition = useMemo(
     () => ({
       x: dimensions.width / 2,
@@ -152,7 +152,6 @@ export const Map: FC<MapProps> = ({ dimensions, onOpenPopup, planetsList, search
             scale={scale}
             position={position}
             planetsList={planetsList}
-            onOpenPopup={onOpenPopup}
             isMapDragging={draggingRef.current}
             isMapDragged={isDraggedRef.current}
           />

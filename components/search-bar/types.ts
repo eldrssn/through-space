@@ -1,5 +1,5 @@
-import { ImageResource } from '@api'
+import { IPlanetItem } from '@/models'
 
 export interface SearchBarProps {
-  setSearchResult: React.Dispatch<React.SetStateAction<ImageResource | null>>
+  setSelectedPlanet: (planet: IPlanetItem) => void
 }

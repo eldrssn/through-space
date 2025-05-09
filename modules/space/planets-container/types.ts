@@ -1,12 +1,12 @@
 import * as PIXI from 'pixi.js'
-import { PositionType, PlanetDataType } from '../types'
+import { PositionType } from '../types'
+import { IPlanetItem } from '@/models'
 
 export type PlanetsContainerProps = {
   scale: number
   position: PositionType
-  planetsList: PlanetDataType[]
+  planetsList: IPlanetItem[]
   extraTexture?: PIXI.Texture<PIXI.Resource>
-  onOpenPopup: (planet: PlanetDataType) => void
   isMapDragging: boolean
   isMapDragged: boolean
 }

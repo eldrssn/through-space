@@ -6,7 +6,7 @@ import * as S from './search-bar.styled'
 import { useDebounce, useGetPlanetByName } from '@hooks'
 import { IPlanetItem } from '@/models'
 
-export const SearchBar: FC<SearchBarProps> = ({ setSearchResult }) => {
+export const SearchBar: FC<SearchBarProps> = ({ setSelectedPlanet }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [isPlanetChoosen, setIsPlanetChoosen] = useState(false)
   const [notFound, setNotFound] = useState(false)
@@ -25,7 +25,7 @@ export const SearchBar: FC<SearchBarProps> = ({ setSearchResult }) => {
   }
 
   const handleClickResultItem = (planet: IPlanetItem) => {
-    setSearchResult(planet)
+    setSelectedPlanet(planet)
     setSearchTerm(planet.planet_name)
     setIsPlanetChoosen(true)
   }
