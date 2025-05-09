@@ -1,8 +1,8 @@
 'use client'
 
 import { FC } from 'react'
-
 import * as S from './content.styled'
+import { ButtonDown } from '@/ui-kit'
 
 export const Content: FC = () => {
   const scrollToSpace = () => {
@@ -22,9 +22,7 @@ export const Content: FC = () => {
           a&nbsp;new story
         </S.Description>
 
-        <S.DownButton onClick={scrollToSpace}>
-          <S.ArrowDown />
-        </S.DownButton>
+        <ButtonDown onClick={scrollToSpace} />
       </S.Conteiner>
     </S.Wrapper>
   )

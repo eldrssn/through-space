@@ -128,15 +128,6 @@ export const UnderlinedButton = styled.button`
     font-size: 14rem;
   }
 `
-export const DownButton = styled.button`
-  background: transparent;
-  cursor: pointer;
-`
-
-export const ArrowDown = styled(ArrowDownImg)`
-  width: 59rem;
-  height: 59rem;
-`
 
 export const RulesWrapper = styled.div`
   position: relative;
