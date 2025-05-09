@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 // import ArrowUpSvg from 'images/arrow-up.svg?react'
-import { Breakpoints } from '@tokens'
+import { Breakpoints, Colors } from '@tokens'
 
 const ArrowUpSvg = 'images/arrow-up.svg'
 
@@ -20,7 +20,7 @@ export const ButtonUpStyled = styled.button<{ $visible: boolean }>`
   justify-content: center;
   align-items: center;
 
-  border: 1.79rem solid #1eeeae;
+  border: 1.79rem solid ${Colors.GREEN};
   border-radius: 12rem;
   padding: 5rem 5rem 5rem 15rem;
   width: 97rem;
@@ -31,7 +31,7 @@ export const ButtonUpStyled = styled.button<{ $visible: boolean }>`
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 14rem;
-  color: #1eeeae;
+  color: ${Colors.GREEN};
 
   &:hover {
     box-shadow:

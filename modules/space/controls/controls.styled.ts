@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import PlusSvg from '@images/plus-black.svg'
 import MinusSvg from '@images/minus-black.svg'
-import { Breakpoints } from '@tokens'
+import { Breakpoints, Colors } from '@tokens'
 
 export const Container = styled.div`
   position: absolute;
@@ -19,8 +19,8 @@ export const Container = styled.div`
 `
 export const Button = styled.button`
   border-radius: 11rem;
-  background: #1eeeae;
-  border: 1.79rem solid #1eeeae;
+  background: ${Colors.GREEN};
+  border: 1.79rem solid ${Colors.GREEN};
   box-shadow: 0 22rem 45rem 0 rgba(0, 0, 0, 0.35);
   width: 59rem;
   height: 59rem;
@@ -36,8 +36,8 @@ export const Button = styled.button`
   &:hover {
     box-shadow:
       0 22rem 45rem 0 rgba(0, 0, 0, 0.35),
-      0 2rem 12rem 0 rgba(30, 238, 174, 0.55);
-    background: #4affc7;
+      0 2rem 12rem 0 rgba(136, 209, 204, 0.35);
+    background: ${Colors.LIGHT_GREEN};
   }
 
   &:first-child {

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import ArrowDownImg from '@images/arrow-down.svg'
-import { Breakpoints } from '@tokens'
+import { Breakpoints, Colors } from '@tokens'
 
 export const Wrapper = styled.section`
   padding: 482rem 0 220rem;
@@ -59,7 +59,7 @@ export const Description = styled.p`
   a {
     text-decoration: underline;
     text-decoration-skip-ink: none;
-    color: #1eeeae;
+    color: ${Colors.GREEN};
     opacity: 1;
     transition: 0.5s ease-in-out;
 
@@ -79,13 +79,13 @@ export const PrimaryButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3rem solid #1eeeae;
+  border: 3rem solid ${Colors.GREEN};
   border-radius: 12rem;
   padding: 20rem 50rem;
   width: 392rem;
   height: 73rem;
   box-shadow: 0 2rem 12rem 0 rgba(30, 238, 174, 0.55);
-  background: #1eeeae;
+  background: ${Colors.GREEN};
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 18rem;
@@ -103,7 +103,7 @@ export const PrimaryButton = styled.button`
     box-shadow:
       0 2rem 12rem 0 rgba(30, 238, 174, 0.55),
       0 2rem 12rem 0 rgba(30, 238, 174, 0.55);
-    background: #4affc7;
+    background: ${Colors.LIGHT_GREEN};
   }
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
@@ -120,7 +120,7 @@ export const UnderlinedButton = styled.button`
   text-decoration: underline;
   text-decoration-skip-ink: none;
   text-align: center;
-  color: #1eeeae;
+  color: ${Colors.GREEN};
   background: transparent;
   cursor: pointer;
 

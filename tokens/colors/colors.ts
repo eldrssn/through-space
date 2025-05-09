@@ -11,4 +11,6 @@ export const Colors = {
   PURPLE: '#7137ff',
   PURPLE_BUTTON: '#9b73ff',
   LIGHT_GREY: '#f0f0f0',
+  GREEN: '#72a7c4',
+  LIGHT_GREEN: '#88d1cc',
 }

@@ -1,4 +1,4 @@
-import { Breakpoints } from '@tokens'
+import { Breakpoints, Colors } from '@tokens'
 import styled, { css } from 'styled-components'
 
 export const SearchContainer = styled.form`
@@ -21,7 +21,7 @@ export const SearchInput = styled.input`
   backdrop-filter: blur(15rem);
   -webkit-backdrop-filter: blur(15rem);
   background-color: rgba(255, 255, 255, 0.03);
-  border: 1rem solid #1eeeae;
+  border: 1rem solid ${Colors.GREEN};
   border-radius: 12rem;
   padding: 10rem 10rem 10rem 25rem;
 
@@ -29,11 +29,11 @@ export const SearchInput = styled.input`
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 16rem;
-  color: #1eeeae;
+  color: ${Colors.GREEN};
   z-index: 300;
 
   &::placeholder {
-    color: #1eeeae;
+    color: ${Colors.GREEN};
     opacity: 0.5;
   }
 
@@ -57,12 +57,12 @@ export const ClearButton = styled.button<{ $visible: boolean }>`
     scale 0.2s ease,
     box-shadow 0.2s ease,
     opacity 0.2s;
-  border: 3rem solid #1eeeae;
+  border: 3rem solid ${Colors.GREEN};
   border-radius: 12rem;
   width: 20rem;
   height: 20rem;
   box-shadow: 0 2rem 12rem 0 rgba(30, 238, 174, 0.55);
-  background: #1eeeae;
+  background: ${Colors.GREEN};
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 12rem;
@@ -70,8 +70,8 @@ export const ClearButton = styled.button<{ $visible: boolean }>`
   padding: 0;
 
   &:hover {
-    border-color: #4affc7;
-    background: #4affc7;
+    border-color: ${Colors.LIGHT_GREEN};
+    background: ${Colors.LIGHT_GREEN};
     box-shadow:
       0 2rem 12rem 0 rgba(30, 238, 174, 0.55),
       0 2rem 12rem 0 rgba(30, 238, 174, 0.55);
@@ -90,7 +90,7 @@ export const ClearButton = styled.button<{ $visible: boolean }>`
 
 export const ErrorMessage = styled.div<{ $visible: boolean }>`
   opacity: 0;
-  color: #1eeeae;
+  color: ${Colors.GREEN};
   margin-top: 12rem;
   text-align: center;
   font-size: 16rem;
@@ -127,7 +127,7 @@ export const ResultList = styled.div<{ $visible: boolean }>`
   backdrop-filter: blur(15rem);
   -webkit-backdrop-filter: blur(15rem);
   background-color: rgba(255, 255, 255, 0.03);
-  border: 1rem solid #1eeeae;
+  border: 1rem solid ${Colors.GREEN};
   border-radius: 12rem;
   padding: 5rem 0;
   overflow: hidden;
@@ -157,7 +157,7 @@ export const ResultItem = styled.div`
   font-family: var(--font-family);
   font-weight: 400;
   font-size: 16rem;
-  color: #1eeeae;
+  color: ${Colors.GREEN};
   z-index: 300;
   display: flex;
   align-items: center;

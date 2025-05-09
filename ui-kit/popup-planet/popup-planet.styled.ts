@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Breakpoints } from '@tokens'
+import { Breakpoints, Colors } from '@tokens'
 
 const decor = 'images/decor.svg'
 
@@ -166,7 +166,7 @@ export const CopyLink = styled.button`
     box-shadow:
       0 2rem 12rem 0 rgba(30, 238, 174, 0.55),
       0 2rem 12rem 0 rgba(30, 238, 174, 0.55);
-    background: #4affc7;
+    background: ${Colors.LIGHT_GREEN};
   }
 
   svg {
