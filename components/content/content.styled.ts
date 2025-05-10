@@ -9,7 +9,8 @@ export const Wrapper = styled.section`
   max-height: 1100rem;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    margin: 200rem 0 5rem;
+    padding: 200rem 0 5rem;
+    height: 100lvh;
   }
 `
 export const Conteiner = styled.div`
@@ -37,7 +38,7 @@ export const Header = styled.h1`
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     font-family: var(--second-family);
     font-weight: 500;
-    font-size: 28rem;
+    font-size: 38rem;
     line-height: 126%;
     color: #fff;
     max-width: 320rem;
@@ -47,7 +48,7 @@ export const Header = styled.h1`
 export const Description = styled.p`
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 24rem;
+  font-size: 28rem;
   text-align: center;
   color: #000;
   margin: 0 101rem 40rem;

@@ -2,10 +2,7 @@ import styled from 'styled-components'
 import { Breakpoints } from '@tokens'
 
 const bg = '/images/bg.svg'
-const bgMobile = '/images/bg-mobile.svg'
-
 const sun = '/images/sun.png'
-const sunMobile = '/images/sun-mobile.png'
 const noise = '/images/noise.png'
 
 export const Main = styled.main`
@@ -15,7 +12,6 @@ export const Main = styled.main`
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  min-height: calc(100 * var(--vh));
   height: 100%;
 
   &::after {
@@ -30,11 +26,11 @@ export const Main = styled.main`
     height: 896rem;
     pointer-events: none;
   }
+
   &::before {
     content: '';
     background: ${`url("${noise}") center repeat`};
     background-size: 100rem;
-
     z-index: 100;
     position: absolute;
     top: 0;
@@ -45,14 +41,13 @@ export const Main = styled.main`
   }
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    background: ${`url("${bgMobile}") top no-repeat`};
+    background: ${`url("${bg}") top no-repeat`};
     background-size: cover;
 
     &::after {
-      background: ${`url("${sunMobile}") center no-repeat`};
-      background-size: cover;
-      width: 300px;
-      height: 154px;
+      width: 300rem;
+      height: 300rem;
+      top: 320rem;
     }
   }
 `

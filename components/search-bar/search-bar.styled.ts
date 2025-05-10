@@ -28,7 +28,7 @@ export const SearchInput = styled.input`
   min-height: 63rem;
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 16rem;
+  font-size: 18rem;
   color: ${Colors.GREEN};
   z-index: 300;
 
@@ -39,7 +39,6 @@ export const SearchInput = styled.input`
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     padding: 10rem 10rem 10rem 15rem;
-    font-size: 12rem;
   }
 `
 
@@ -48,7 +47,6 @@ export const ClearButton = styled.button<{ $visible: boolean }>`
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   right: 16rem;
   top: 22rem;
-  /* translate: 0 -50%; */
   border: none;
   cursor: pointer;
   transition:
@@ -79,12 +77,6 @@ export const ClearButton = styled.button<{ $visible: boolean }>`
 
   &:active {
     scale: 0.98;
-  }
-
-  @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    width: 86rem;
-    height: 43rem;
-    padding: 10rem;
   }
 `
 
@@ -133,11 +125,13 @@ export const ResultList = styled.div<{ $visible: boolean }>`
   overflow: hidden;
   min-height: auto;
   transition: all 0.4s;
+  pointer-events: none;
 
   ${({ $visible }) =>
     $visible &&
     css`
       animation: fadeIn 0.3s ease forwards;
+      pointer-events: auto;
     `}
 
   @keyframes fadeIn {
@@ -156,7 +150,7 @@ export const ResultItem = styled.div`
   min-height: 40rem;
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 16rem;
+  font-size: 18rem;
   color: ${Colors.GREEN};
   z-index: 300;
   display: flex;

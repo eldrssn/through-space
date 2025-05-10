@@ -16,7 +16,7 @@ export const SpaceContainer = styled.div`
   max-height: 1100rem;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    height: 720rem;
+    height: 100lvh;
   }
 `
 export const MapWrapper = styled.div`

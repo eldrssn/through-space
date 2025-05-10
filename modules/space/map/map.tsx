@@ -13,6 +13,7 @@ import { PlanetsContainer } from '../planets-container'
 import { MapProps } from './types'
 import { useDrag, useTouch, useZoom } from '../hooks'
 import { drawBackground } from './styles'
+import { useIsMobile } from '@/hooks'
 
 extend({
   Graphics,
@@ -20,6 +21,7 @@ extend({
 })
 
 export const Map: FC<MapProps> = ({ dimensions, planetsList, searchResult }) => {
+  const isMobile = useIsMobile()
   const initialPosition = useMemo(
     () => ({
       x: dimensions.width / 2,

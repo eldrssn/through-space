@@ -10,7 +10,6 @@ const sputnikImg = '/images/animated-planets/sputnik.png'
 
 import { Breakpoints } from '@tokens'
 
-// Анимация вращения
 const rotate = keyframes`
   from {
     transform: rotate(0deg);
@@ -25,6 +24,7 @@ export const Planet1 = styled.div`
   bottom: 0;
   left: 50%;
   translate: -50% 50%;
+  rotate: -10deg;
   width: 41rem;
   height: 41rem;
   background: ${`url("${planetSvg1}") center no-repeat`};
@@ -45,6 +45,7 @@ export const Planet2 = styled.div`
   height: 90rem;
   background: ${`url("${planetSvg2}") center no-repeat`};
   background-size: contain;
+  rotate: -30deg;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 26rem;
@@ -58,6 +59,7 @@ export const Planet3 = styled.div`
   translate: -50% 50%;
   width: 179rem;
   height: 179rem;
+  rotate: -10deg;
 
   background: ${`url("${planetSvg3}") center no-repeat`};
   background-size: contain;
@@ -77,6 +79,7 @@ export const Planet4 = styled.div`
   height: 133rem;
   background: ${`url("${planetSvg4}") center no-repeat`};
   background-size: contain;
+  rotate: -20deg;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 38rem;
@@ -109,7 +112,8 @@ export const Wrapper = styled.div`
   pointer-events: none;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    height: 400rem;
+    top: 320rem;
+    height: calc(140 * var(--vh));
   }
 `
 
@@ -117,8 +121,8 @@ export const OrbitBox = styled.div`
   position: absolute;
   left: 50%;
   translate: -50% -50%;
-  animation: ${rotate} 60s linear infinite; // Добавляем анимацию вращения
-  transform-origin: center; // Убедимся, что вращение происходит вокруг центра
+  animation: ${rotate} 60s linear infinite;
+  transform-origin: center;
 `
 
 export const OrbitBox1 = styled(OrbitBox)`
@@ -139,7 +143,7 @@ export const OrbitBox2 = styled(OrbitBox)`
   width: 968rem;
   animation-duration: 40s;
   animation-direction: reverse;
-  rotate: 60deg;
+  rotate: 140deg;
   & svg:first-child {
     opacity: 0.2;
   }
@@ -152,7 +156,7 @@ export const OrbitBox2 = styled(OrbitBox)`
 export const OrbitBox3 = styled(OrbitBox)`
   width: 1324rem;
   animation-duration: 60s;
-  rotate: -80deg;
+  rotate: 170deg;
   & svg:first-child {
     opacity: 0.15;
   }
@@ -166,8 +170,8 @@ export const OrbitBox4 = styled(OrbitBox)`
   width: 1736rem;
   animation-duration: 70s;
   animation-direction: reverse;
+  rotate: 140deg;
 
-  rotate: 75deg;
   & > svg:first-child {
     opacity: 0.1;
   }
@@ -202,7 +206,7 @@ export const SputnikBox = styled.div`
   bottom: 0;
   left: 50%;
   translate: -50% 50%;
-  width: 120rem;
+  width: 50rem;
   height: 120rem;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
@@ -217,8 +221,6 @@ export const Spitnik = styled.span`
   left: -100%;
   width: 60rem;
   height: 60rem;
-  /* background-color: #d9d9d9; */
-  /* border-radius: 50%; */
   background: ${`url("${sputnikImg}") center no-repeat`};
   background-size: cover;
 
@@ -230,7 +232,7 @@ export const Spitnik = styled.span`
 
 export const SputnikBox1 = styled(SputnikBox)`
   animation: ${rotate} 35s linear infinite;
-  animation-direction: reverse;
+  /* animation-direction: reverse; */
 `
 export const Spitnik1 = styled(Spitnik)``
 

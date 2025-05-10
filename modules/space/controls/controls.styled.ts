@@ -12,7 +12,7 @@ export const Container = styled.div`
   display: flex;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    top: 128rem;
+    bottom: 100rem;
     height: 41rem;
   }
 `

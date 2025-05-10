@@ -1,6 +1,7 @@
 export const PLANET_COUNT = 100
 export const MIN_SCALE = 1 // Уменьшенное минимальное значение масштаба
 export const DEFAULT_SCALE = 3
+
 export const MAX_SCALE = 10.0 // Увеличенное максимальное значение масштаба
 export const ZOOM_SENSITIVITY = 1 // Шаг приближения
 export const WIDTH = 1920 * 3
