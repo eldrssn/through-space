@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 import { gsap } from 'gsap'
+import { Assets, Texture } from 'pixi.js'
 
 import { HEIGHT, MAX_SCALE, PARALLAX_DEPTH_FACTOR, WIDTH } from './constants'
 import { PositionType } from './types'
@@ -43,37 +44,46 @@ export const STAR_IMAGES = [
   '/images/map-planets/planet-9.png',
 ]
 
+const TOOLTIP_IMG = '/images/animated-planets/tooltip.png'
+
 // Кэш для текстур звезд
 export const starTextures: PIXI.Texture[] = []
-export const extraTextures: PIXI.Texture[] = []
+export let extraTextures: Record<string, PIXI.Texture<PIXI.TextureSource<any>>> = {}
 
 export const preloadStarTextures = async (onProgress?: (progress: number) => void): Promise<void> => {
-  const totalAssets = STAR_IMAGES.length
-  let loadedCount = 0
+  const starResources: Record<string, string> = STAR_IMAGES.reduce(
+    (acc, path, index) => {
+      acc[`star-${index}`] = path
+      return acc
+    },
+    {} as Record<string, string>
+  )
 
-  starTextures.length = 0
-  extraTextures.length = 0
+  const extraResources: Record<string, string> = {
+    tooltip: TOOLTIP_IMG,
+  }
 
-  const updateProgress = () => {
-    loadedCount++
-    const progress = Math.round((loadedCount / totalAssets) * 100)
+  Assets.addBundle('stars', starResources)
+  Assets.addBundle('extras', extraResources)
+
+  let loaded = 0
+  const total = Object.keys(starResources).length + Object.keys(extraResources).length
+
+  const handleProgress = () => {
+    loaded++
+    const progress = Math.round((loaded / total) * 100)
     onProgress?.(progress)
   }
 
-  const starLoadPromises = STAR_IMAGES.map((path) =>
-    PIXI.Assets.load(path)
-      .then((texture) => {
-        starTextures.push(texture)
-        updateProgress()
-        return texture
-      })
-      .catch(() => {
-        updateProgress()
-        return null
-      })
-  )
+  const [stars, extras] = await Promise.all([
+    Assets.loadBundle('stars', handleProgress) as Promise<Record<string, Texture>>,
+    Assets.loadBundle('extras', handleProgress) as Promise<Record<string, Texture>>,
+  ])
 
-  await Promise.all([...starLoadPromises])
+  starTextures.length = 0
+  Object.values(stars).forEach((texture) => starTextures.push(texture))
+
+  extraTextures = extras
 }
 
 // Функция для получения случайной текстуры звезды из предзагруженных

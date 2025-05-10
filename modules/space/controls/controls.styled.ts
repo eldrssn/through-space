@@ -6,8 +6,7 @@ import { Breakpoints, Colors } from '@tokens'
 
 export const Container = styled.div`
   position: absolute;
-  height: 59rem;
-  top: 150rem;
+  bottom: 70rem;
   left: 50%;
   translate: -50%;
   display: flex;
@@ -18,12 +17,11 @@ export const Container = styled.div`
   }
 `
 export const Button = styled.button`
-  border-radius: 11rem;
+  border-radius: 4rem;
   background: ${Colors.GREEN};
-  border: 1.79rem solid ${Colors.GREEN};
   box-shadow: 0 22rem 45rem 0 rgba(0, 0, 0, 0.35);
-  width: 59rem;
-  height: 59rem;
+  width: 39rem;
+  height: 39rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,9 +32,6 @@ export const Button = styled.button`
     background 0.2s;
 
   &:hover {
-    box-shadow:
-      0 22rem 45rem 0 rgba(0, 0, 0, 0.35),
-      0 2rem 12rem 0 rgba(136, 209, 204, 0.35);
     background: ${Colors.LIGHT_GREEN};
   }
 

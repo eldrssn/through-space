@@ -18,19 +18,9 @@ const Map = dynamic(() => import('./map'), {
 
 export const Space = () => {
   const { dimensions } = useWindowDimensions()
-  const { selectedPlanet, setSelectedPlanet, clearSelectedPlanet } = useSpaceStore()
+  const { selectedPlanet, setSelectedPlanet } = useSpaceStore()
   const [isLoaded, setIsLoaded] = useState(false)
   const { planets: planetsList } = useGetPlanets()
-
-  useEffect(() => {
-    if (!selectedPlanet) return
-
-    const timer = setTimeout(() => {
-      clearSelectedPlanet()
-    }, 1000)
-
-    return () => clearTimeout(timer)
-  }, [selectedPlanet])
 
   // TODO: вынести в стор и добавить лоадер
   useEffect(() => {

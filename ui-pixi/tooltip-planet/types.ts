@@ -3,4 +3,5 @@ export interface TooltipPlanetProps {
   y: number
   planetName: string
   scale: number
+  onClose: () => void
 }

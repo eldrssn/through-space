@@ -7,6 +7,7 @@ const planetSvg3 = '/images/animated-planets/planet-2.png'
 const planetSvg4 = '/images/animated-planets/planet-1.png'
 const planetSvg5 = '/images/animated-planets/planet-3.png'
 const sputnikImg = '/images/animated-planets/sputnik.png'
+
 import { Breakpoints } from '@tokens'
 
 // Анимация вращения

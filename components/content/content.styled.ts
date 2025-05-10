@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import ArrowDownImg from '@images/arrow-down.svg'
 import { Breakpoints, Colors } from '@tokens'
 
 export const Wrapper = styled.section`

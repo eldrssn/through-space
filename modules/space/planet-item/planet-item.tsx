@@ -8,6 +8,7 @@ import { TooltipPlanet } from '@ui-pixi'
 import { MAX_GOBAL_SCALE, PARALLAX_DEPTH_FACTOR } from '../constants'
 import { extend } from '@pixi/react'
 import { Container, Sprite } from 'pixi.js'
+import { useSpaceStore } from '../store'
 
 const RADIUS = 1
 
@@ -17,11 +18,10 @@ extend({
 })
 
 export const PlanetItem: FC<PlanetItemProps> = ({ planet, globalScale, isMapDragging, globalPosition }) => {
-  const { x, y, z, planet_name } = planet
+  const { x, y, z, planet_name, id } = planet
+  const { setSelectedPlanet, selectedPlanet, clearSelectedPlanet } = useSpaceStore()
 
   const [hovered, setHovered] = useState(false)
-
-  const [showTooltip, setShowTooltip] = useState(false)
 
   const texture = useRef<PIXI.Texture>(getRandomStarTexture())
 
@@ -31,16 +31,8 @@ export const PlanetItem: FC<PlanetItemProps> = ({ planet, globalScale, isMapDrag
   const parallaxY = y + globalPosition.y * parallaxFactor
   const baseSize = RADIUS * (z + globalScale / 10)
 
-  useEffect(() => {
-    if (globalScale >= MAX_GOBAL_SCALE) {
-      setShowTooltip(true)
-    } else {
-      setShowTooltip(false)
-    }
-  }, [globalScale])
-
   const handleClick = useCallback(() => {
-    // onOpenPopup(planet)
+    setSelectedPlanet(planet)
   }, [])
 
   const handleMouseOut = useCallback(() => setHovered(false), [])
@@ -61,10 +53,13 @@ export const PlanetItem: FC<PlanetItemProps> = ({ planet, globalScale, isMapDrag
       onPointerTap={handleClick}
       cursor="pointer"
       interactive={!isMapDragging}
+      scale={baseSize / 100}
     >
-      <pixiSprite texture={texture.current} anchor={0.5} scale={baseSize / 100} tint={hovered ? 0x999999 : 0xffffff} />
+      <pixiSprite texture={texture.current} anchor={0.5} tint={hovered ? 0x999999 : 0xffffff} />
 
-      {showTooltip && <TooltipPlanet x={0} y={-18} scale={globalScale / 100} planetName={planet_name} />}
+      {selectedPlanet?.id === id && (
+        <TooltipPlanet x={0} y={-150} scale={globalScale / 5} planetName={planet_name} onClose={clearSelectedPlanet} />
+      )}
     </pixiContainer>
   )
 }

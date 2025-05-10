@@ -132,7 +132,7 @@ export const Map: FC<MapProps> = ({ dimensions, planetsList, searchResult }) => 
         },
       }
     )
-  }, [searchResult, dimensions, position, scale, tweenUpdateHandler])
+  }, [searchResult])
 
   return (
     <>
