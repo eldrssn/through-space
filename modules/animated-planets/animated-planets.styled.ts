@@ -31,7 +31,7 @@ export const Planet1 = styled.div`
   background-size: contain;
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    width: 12rem;
+    width: 20rem;
     height: 20rem;
   }
 `
@@ -49,7 +49,7 @@ export const Planet2 = styled.div`
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 26rem;
-    height: 48rem;
+    height: 26rem;
   }
 `
 export const Planet3 = styled.div`
@@ -66,7 +66,7 @@ export const Planet3 = styled.div`
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 52rem;
-    height: 94rem;
+    height: 52rem;
   }
 `
 
@@ -83,7 +83,7 @@ export const Planet4 = styled.div`
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 38rem;
-    height: 58rem;
+    height: 38rem;
   }
 `
 
@@ -99,7 +99,7 @@ export const Planet5 = styled.div`
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
     width: 74rem;
-    height: 133rem;
+    height: 74rem;
   }
 `
 

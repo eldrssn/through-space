@@ -32,7 +32,7 @@ export const generateMockPlanets = (PLANET_COUNT: number): IPlanetItem[] => {
   return sortingPlanets(planets)
 }
 
-export const STAR_IMAGES = [
+const STAR_IMAGES = [
   '/images/map-planets/planet-1.png',
   '/images/map-planets/planet-2.png',
   '/images/map-planets/planet-3.png',
@@ -44,16 +44,34 @@ export const STAR_IMAGES = [
   '/images/map-planets/planet-9.png',
 ]
 
+const ASSETS_IMAGES = [
+  '/images/animated-planets/planet-1.png',
+  '/images/animated-planets/planet-2.png',
+  '/images/animated-planets/planet-3.png',
+  '/images/animated-planets/planet-4.png',
+  '/images/animated-planets/planet-5.png',
+  '/images/animated-planets/sputnik.png',
+]
+
 const TOOLTIP_IMG = '/images/animated-planets/tooltip.png'
 
 // Кэш для текстур звезд
 export const starTextures: PIXI.Texture[] = []
+export const assetsTextures: PIXI.Texture[] = []
 export let extraTextures: Record<string, PIXI.Texture<PIXI.TextureSource<any>>> = {}
 
-export const preloadStarTextures = async (onProgress?: (progress: number) => void): Promise<void> => {
+export const preloadTextures = async (onProgress?: (progress: number) => void): Promise<void> => {
   const starResources: Record<string, string> = STAR_IMAGES.reduce(
     (acc, path, index) => {
       acc[`star-${index}`] = path
+      return acc
+    },
+    {} as Record<string, string>
+  )
+
+  const assetsTextures: Record<string, string> = ASSETS_IMAGES.reduce(
+    (acc, path, index) => {
+      acc[`assets-${index}`] = path
       return acc
     },
     {} as Record<string, string>
@@ -64,6 +82,7 @@ export const preloadStarTextures = async (onProgress?: (progress: number) => voi
   }
 
   Assets.addBundle('stars', starResources)
+  Assets.addBundle('assets', assetsTextures)
   Assets.addBundle('extras', extraResources)
 
   let loaded = 0

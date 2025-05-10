@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
-import './globals.css'
-import StyledComponentsRegistry from '@/lib/registry'
 import Script from 'next/script'
+import Head from 'next/head'
+import StyledComponentsRegistry from '@/lib/registry'
+import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Through the space',
@@ -14,6 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="preload" as="image" href="/images/animated-planets/planet-1.png" />
+      </Head>
       <body>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         <div id="popups"></div>
