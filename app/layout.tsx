@@ -27,11 +27,13 @@ export default function RootLayout({
 
         <Script id="viewport-resize-handler" strategy="afterInteractive">
           {`
-            const handleWindowResize = () => {
-              document.documentElement.style.setProperty('--vh', \`\${window.innerHeight * 0.01}px\`)
-            }
-            handleWindowResize()
-            window.addEventListener('resize', handleWindowResize)
+            if (typeof document !== 'undefined') {
+      const handleWindowResize = () => {
+        document.documentElement.style.setProperty('--vh', \`\${window.innerHeight * 0.01}px\`)
+      }
+      handleWindowResize()
+      window.addEventListener('resize', handleWindowResize)
+    }
           `}
         </Script>
       </body>
