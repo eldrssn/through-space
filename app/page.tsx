@@ -1,7 +1,8 @@
 'use client'
 
-import * as S from './styled'
 import { Content } from '@/components'
+
+import * as S from './styled'
 
 export default function Home() {
   // const [loadingProgress, setLoadingProgress] = useState(0)
