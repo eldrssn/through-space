@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 
 import { useIsMobile } from '@hooks'
@@ -13,6 +15,7 @@ export const useWindowDimensions = () => {
   })
 
   useEffect(() => {
+    if (!document) return
     const fontSize = parseFloat(getComputedStyle(document.body).fontSize)
     const updateDimensions = () => {
       setDimensions({

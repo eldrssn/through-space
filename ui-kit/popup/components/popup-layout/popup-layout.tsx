@@ -3,9 +3,10 @@ import { FC, useEffect, useRef, useState } from 'react'
 import { clearAllBodyScrollLocks } from 'body-scroll-lock'
 import { CSSTransition } from 'react-transition-group'
 
+import { POPUP_DELAY } from '@app/constants'
+
 import { PopupProps } from '../../types'
 import * as S from './styled-components'
-import { POPUP_DELAY } from '@app/constants'
 
 export const PopupLayout: FC<PopupProps> = ({ onClose, opened, children, mounted, ...rest }) => {
   const overlayRef = useRef<HTMLDivElement | null>(null)
@@ -35,6 +36,7 @@ export const PopupLayout: FC<PopupProps> = ({ onClose, opened, children, mounted
   }, [opened])
 
   useEffect(() => {
+    if (!document) return
     const handleFullscreenChange = () => {
       const isFullscreen =
         document.fullscreenElement ||

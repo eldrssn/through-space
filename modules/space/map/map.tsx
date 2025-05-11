@@ -88,6 +88,8 @@ export const Map: FC<MapProps> = ({ dimensions, planetsList, searchResult }) => 
   })
 
   useEffect(() => {
+    if (!document) return
+
     const element = document.querySelector('#space-container') as HTMLElement
 
     if (element) {
@@ -107,7 +109,7 @@ export const Map: FC<MapProps> = ({ dimensions, planetsList, searchResult }) => 
         element.removeEventListener('touchcancel', handleTouchEnd)
       }
     }
-  }, [handleTouchStart, handleTouchMove, handleTouchEnd])
+  }, [handleTouchStart, handleTouchMove, handleTouchEnd, handleTouchEndForDoubleTap])
 
   useEffect(() => {
     if (!searchResult) return
