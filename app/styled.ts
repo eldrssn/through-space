@@ -31,7 +31,7 @@ export const Main = styled.main`
   &::before {
     content: '';
     background: ${`url("${noise}") center repeat`};
-    background-size: 100rem;
+    background-size: 35rem;
     z-index: 100;
     position: absolute;
     top: 0;
