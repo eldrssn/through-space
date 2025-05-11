@@ -1,3 +1,5 @@
+'use client'
+
 import React, { FC, useRef } from 'react'
 
 import type { AnimationItem } from 'lottie-web'
@@ -22,7 +24,6 @@ export const ButtonDown: FC<ButtonDownProps> = ({ onClick }) => {
 
   const handleMouseEnter = () => {
     const anim = lottieRef.current?.anim
-    console.log(anim)
 
     if (anim) {
       anim.stop()
