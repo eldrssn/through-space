@@ -19,7 +19,6 @@ export const PlanetsContainer: FC<PlanetsContainerProps> = ({
   scale,
   position,
   planetsList,
-  extraTexture,
   isMapDragging,
   isMapDragged,
 }) => {
@@ -31,8 +30,6 @@ export const PlanetsContainer: FC<PlanetsContainerProps> = ({
 
   return (
     <pixiContainer sortableChildren={true} zIndex={0} scale={scale} position={position} interactiveChildren={true}>
-      {extraTexture && <pixiSprite texture={extraTexture} anchor={0.5} />}
-
       {visiblePlanets.map((planet) => (
         <PlanetItem
           key={planet.id}

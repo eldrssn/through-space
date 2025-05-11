@@ -1,11 +1,11 @@
 'use client'
 
-import { FC, useState, useRef, useEffect, useCallback } from 'react'
+import { FC, useState, useRef, useCallback } from 'react'
 import * as PIXI from 'pixi.js'
 import { PlanetItemProps } from './types'
 import { getRandomStarTexture } from '../utils'
 import { TooltipPlanet } from '@ui-pixi'
-import { MAX_GOBAL_SCALE, PARALLAX_DEPTH_FACTOR } from '../constants'
+import { PARALLAX_DEPTH_FACTOR } from '../constants'
 import { extend } from '@pixi/react'
 import { Container, Sprite } from 'pixi.js'
 import { useSpaceStore } from '../store'
