@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+
 import OrgbitSvg from '@images/animated-planets/orbit.svg'
 
 const planetSvg1 = '/images/animated-planets/planet-5.png'

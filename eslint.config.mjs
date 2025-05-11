@@ -14,7 +14,6 @@ const eslintConfig = [
     ignores: ['dist', 'node_modules'],
   },
   ...compat.extends(
-    'eslint:recommended',
     'next/core-web-vitals',
     'next/typescript',
     'plugin:@typescript-eslint/recommended',

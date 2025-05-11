@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 
+import { POPUP_DELAY } from '@app/constants'
+
 import { PopupLayout, PopupPortal } from './components'
 import { PopupProps } from './types'
-import { POPUP_DELAY } from '@app/constants'
 
 export const Popup = (props: PopupProps) => {
   const { opened } = props

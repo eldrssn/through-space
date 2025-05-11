@@ -1,11 +1,13 @@
 'use client'
 
-import { Content, Loader } from '@/components'
-import * as S from './styled'
-import { AnimatedPlanets, Space } from '@modules'
 import { useEffect, useState } from 'react'
+
+import { Content, Loader } from '@/components'
 import { useGetPlanets } from '@/hooks'
 import { preloadTextures } from '@/modules/space/utils'
+import { AnimatedPlanets, Space } from '@modules'
+
+import * as S from './styled'
 
 export default function Home() {
   const [loadingProgress, setLoadingProgress] = useState(0)

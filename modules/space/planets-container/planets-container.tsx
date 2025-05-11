@@ -1,13 +1,15 @@
 'use client'
 
 import { FC, useMemo } from 'react'
-import { PlanetsContainerProps } from './types'
-import { PlanetItem } from '../planet-item'
-import { getVisiblePlanets } from '../utils'
-import { useIsMobile } from '@hooks'
 
 import { Container, Graphics, Sprite } from 'pixi.js'
+
+import { useIsMobile } from '@hooks'
 import { extend } from '@pixi/react'
+
+import { PlanetItem } from '../planet-item'
+import { getVisiblePlanets } from '../utils'
+import { PlanetsContainerProps } from './types'
 
 extend({
   Container,

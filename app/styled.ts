@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { Breakpoints } from '@tokens'
 
 const bg = '/images/bg.svg'

@@ -1,7 +1,9 @@
-import { useState, useRef, useCallback, useMemo } from 'react'
-import { DragProps } from './types'
-import { PositionType } from '../../types'
+import { useCallback, useMemo, useRef, useState } from 'react'
+
 import * as PIXI from 'pixi.js'
+
+import { PositionType } from '../../types'
+import { DragProps } from './types'
 
 export const useDrag = ({ initialPosition, position, setPosition }: DragProps) => {
   const [cursor, setCursor] = useState('grab')

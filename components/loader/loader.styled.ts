@@ -1,5 +1,7 @@
 import styled, { keyframes } from 'styled-components'
+
 import OrgbitSvg from '@images/animated-planets/orbit.svg'
+
 const planet = '/images/animated-planets/planet-1.png'
 
 import { Breakpoints } from '@tokens'

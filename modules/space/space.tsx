@@ -1,14 +1,14 @@
 'use client'
 
-import { useWindowDimensions } from './hooks'
-import { MapWrapper, SpaceContainer } from './space.styled'
 import { Suspense } from 'react'
 
-import { SearchBar } from '@components'
+import dynamic from 'next/dynamic'
 
+import { SearchBar } from '@components'
 import { useGetPlanets } from '@hooks'
 
-import dynamic from 'next/dynamic'
+import { useWindowDimensions } from './hooks'
+import { MapWrapper, SpaceContainer } from './space.styled'
 import { useSpaceStore } from './store'
 
 const Map = dynamic(() => import('./map'), {

@@ -1,10 +1,12 @@
 import { FC } from 'react'
-import { extend } from '@pixi/react'
+
 import { Container, FederatedPointerEvent, Graphics, Sprite, Text } from 'pixi.js'
 
-import { TooltipPlanetProps } from './types'
-import { closeTextStyle, nameStyles } from './styles'
 import { extraTextures } from '@/modules/space/utils'
+import { extend } from '@pixi/react'
+
+import { closeTextStyle, nameStyles } from './styles'
+import { TooltipPlanetProps } from './types'
 
 extend({
   Graphics,

@@ -1,4 +1,5 @@
 import { IPlanetItem } from '@/models'
+
 import { PositionType } from '../types'
 
 export type PlanetItemProps = {

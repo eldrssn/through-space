@@ -1,1 +1,1 @@
-export { useZoom} from './use-zoom'
+export { useZoom } from './use-zoom'

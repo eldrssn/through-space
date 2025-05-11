@@ -1,9 +1,10 @@
-import { useRef, useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
+
 import * as PIXI from 'pixi.js'
 
-import { createTweenMap } from '../../utils'
-import { PositionType } from '../../types'
 import { MAX_SCALE, MIN_SCALE } from '../../constants'
+import { PositionType } from '../../types'
+import { createTweenMap } from '../../utils'
 import { TouchProps } from './types'
 
 export const useTouch = ({ positionRef, scaleRef, tweenUpdateHandler, handleZoom }: TouchProps) => {

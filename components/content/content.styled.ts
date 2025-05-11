@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { Breakpoints, Colors } from '@tokens'
 
 export const Wrapper = styled.section`

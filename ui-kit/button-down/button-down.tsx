@@ -1,9 +1,12 @@
 import React, { FC, useRef } from 'react'
+
+import type { AnimationItem } from 'lottie-web'
 import Lottie from 'react-lottie'
-import { ButtonDownProps } from './types'
+
+import arrowDownData from '@app/assets/lottie/arrow-down.json'
 
 import * as S from './button-down.styled'
-import arrowDownData from '@app/assets/lottie/arrow-down.json'
+import { ButtonDownProps } from './types'
 
 const lottieOptions = {
   loop: false,
@@ -15,10 +18,12 @@ const lottieOptions = {
 }
 
 export const ButtonDown: FC<ButtonDownProps> = ({ onClick }) => {
-  const lottieRef = useRef<any>(null)
+  const lottieRef = useRef<{ anim: AnimationItem } | null>(null)
 
   const handleMouseEnter = () => {
     const anim = lottieRef.current?.anim
+    console.log(anim)
+
     if (anim) {
       anim.stop()
       anim.goToAndPlay(0, true)
@@ -27,7 +32,13 @@ export const ButtonDown: FC<ButtonDownProps> = ({ onClick }) => {
 
   return (
     <S.DownButton onClick={onClick} onMouseEnter={handleMouseEnter}>
-      <Lottie ref={lottieRef} options={lottieOptions} height="34rem" width="34rem" isClickToPauseDisabled />
+      <Lottie
+        ref={lottieRef as React.Ref<Lottie>}
+        options={lottieOptions}
+        height="34rem"
+        width="34rem"
+        isClickToPauseDisabled
+      />
     </S.DownButton>
   )
 }

@@ -1,18 +1,20 @@
 'use client'
 
 import { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Application, extend } from '@pixi/react'
-import * as PIXI from 'pixi.js'
-import { gsap } from 'gsap'
-import { Graphics, Sprite } from 'pixi.js'
-import { Controls } from '../controls'
 
-import { PositionType } from '../types'
+import { gsap } from 'gsap'
+import * as PIXI from 'pixi.js'
+import { Graphics, Sprite } from 'pixi.js'
+
+import { Application, extend } from '@pixi/react'
+
 import { DEFAULT_SCALE, MAX_GOBAL_SCALE, PARALLAX_DEPTH_FACTOR, ZOOM_SENSITIVITY } from '../constants'
-import { PlanetsContainer } from '../planets-container'
-import { MapProps } from './types'
+import { Controls } from '../controls'
 import { useDrag, useTouch, useZoom } from '../hooks'
+import { PlanetsContainer } from '../planets-container'
+import { PositionType } from '../types'
 import { drawBackground } from './styles'
+import { MapProps } from './types'
 
 extend({
   Graphics,

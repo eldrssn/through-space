@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js'
+
 import { PositionType } from '../../types'
 
 export interface TouchProps {

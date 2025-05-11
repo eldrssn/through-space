@@ -1,10 +1,11 @@
-import * as PIXI from 'pixi.js'
 import { gsap } from 'gsap'
+import * as PIXI from 'pixi.js'
 import { Assets, Texture } from 'pixi.js'
+
+import { IPlanetItem } from '@/models'
 
 import { HEIGHT, MAX_SCALE, PARALLAX_DEPTH_FACTOR, WIDTH } from './constants'
 import { PositionType } from './types'
-import { IPlanetItem } from '@/models'
 
 const names = ['Альфа', 'Бета', 'Гамма', 'Дельта', 'Эпсилон', 'Дзета', 'Эта', 'Тета']
 
@@ -58,6 +59,7 @@ const TOOLTIP_IMG = '/images/animated-planets/tooltip.png'
 // Кэш для текстур звезд
 export const starTextures: PIXI.Texture[] = []
 export const assetsTextures: PIXI.Texture[] = []
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export let extraTextures: Record<string, PIXI.Texture<PIXI.TextureSource<any>>> = {}
 
 export const preloadTextures = async (onProgress?: (progress: number) => void): Promise<void> => {

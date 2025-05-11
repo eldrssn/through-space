@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-import PlusSvg from '@images/plus-black.svg'
 import MinusSvg from '@images/minus-black.svg'
+import PlusSvg from '@images/plus-black.svg'
 import { Breakpoints, Colors } from '@tokens'
 
 export const Container = styled.div`

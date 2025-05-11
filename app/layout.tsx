@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import Head from 'next/head'
+import Script from 'next/script'
+
 import StyledComponentsRegistry from '@/lib/registry'
+
 import './globals.css'
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
   title: 'Through the space',
 }

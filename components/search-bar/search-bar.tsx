@@ -1,10 +1,12 @@
 'use client'
 
 import { FC, useState } from 'react'
-import { SearchBarProps } from './types'
-import * as S from './search-bar.styled'
-import { useDebounce, useGetPlanetByName } from '@hooks'
+
 import { IPlanetItem } from '@/models'
+import { useDebounce, useGetPlanetByName } from '@hooks'
+
+import * as S from './search-bar.styled'
+import { SearchBarProps } from './types'
 
 export const SearchBar: FC<SearchBarProps> = ({ setSelectedPlanet }) => {
   const [searchTerm, setSearchTerm] = useState('')

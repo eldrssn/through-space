@@ -1,6 +1,7 @@
-import { useRef, useCallback, useEffect } from 'react'
-import { PositionType } from '../../types'
+import { useCallback, useEffect, useRef } from 'react'
+
 import { MAX_SCALE, MIN_SCALE, ZOOM_SENSITIVITY } from '../../constants'
+import { PositionType } from '../../types'
 import { createTweenMap } from '../../utils'
 import { ZoomProps } from './types'
 
@@ -16,7 +17,10 @@ export const useZoom = ({ scale, setScale, position, setPosition }: ZoomProps) =
 
   const tweenUpdateHandler = (scale: number, position?: PositionType) => {
     setScale(scale)
-    position && setPosition(position)
+
+    if (position) {
+      setPosition(position)
+    }
   }
 
   const animateZoomToPoint = useCallback((clickX: number, clickY: number, targetScale: number) => {

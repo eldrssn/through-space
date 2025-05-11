@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react'
-import { DimensionsType } from '../../types'
+import { useEffect, useState } from 'react'
+
 import { useIsMobile } from '@hooks'
+
+import { DimensionsType } from '../../types'
 
 export const useWindowDimensions = () => {
   const isMobile = useIsMobile()

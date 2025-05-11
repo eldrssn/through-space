@@ -1,8 +1,10 @@
 'use client'
 
 import { FC } from 'react'
-import * as S from './content.styled'
+
 import { ButtonDown } from '@/ui-kit'
+
+import * as S from './content.styled'
 
 export const Content: FC = () => {
   const scrollToSpace = () => {

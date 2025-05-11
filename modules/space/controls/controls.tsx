@@ -1,8 +1,9 @@
 'use client'
 
 import { FC, memo } from 'react'
-import { ControlsProps } from './types'
+
 import * as S from './controls.styled'
+import { ControlsProps } from './types'
 
 export const Controls: FC<ControlsProps> = memo(({ onZoomIn, onZoomOut }) => {
   return (
@@ -16,3 +17,5 @@ export const Controls: FC<ControlsProps> = memo(({ onZoomIn, onZoomOut }) => {
     </S.Container>
   )
 })
+
+Controls.displayName = 'Controls'

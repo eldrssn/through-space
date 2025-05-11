@@ -1,5 +1,6 @@
-import { PositionType } from '../types'
 import { IPlanetItem } from '@/models'
+
+import { PositionType } from '../types'
 
 export type PlanetsContainerProps = {
   scale: number

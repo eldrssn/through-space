@@ -1,5 +1,6 @@
-import { IPlanetItem } from '@/models'
 import { create } from 'zustand'
+
+import { IPlanetItem } from '@/models'
 
 interface ModalsStore {
   selectedPlanet: IPlanetItem | null

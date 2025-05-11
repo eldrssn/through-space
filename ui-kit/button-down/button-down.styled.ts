@@ -1,5 +1,6 @@
-import { Colors } from '@/tokens'
 import styled from 'styled-components'
+
+import { Colors } from '@/tokens'
 
 export const DownButton = styled.button`
   background: transparent;

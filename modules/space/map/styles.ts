@@ -1,6 +1,6 @@
-import { HEIGHT, WIDTH } from '../constants'
-
 import * as PIXI from 'pixi.js'
+
+import { HEIGHT, WIDTH } from '../constants'
 
 export const drawBackground = (g: PIXI.Graphics) => {
   g.clear()

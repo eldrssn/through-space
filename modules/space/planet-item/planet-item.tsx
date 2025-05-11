@@ -1,14 +1,17 @@
 'use client'
 
-import { FC, useState, useRef, useCallback } from 'react'
+import { FC, useCallback, useRef, useState } from 'react'
+
 import * as PIXI from 'pixi.js'
-import { PlanetItemProps } from './types'
-import { getRandomStarTexture } from '../utils'
-import { TooltipPlanet } from '@ui-pixi'
-import { PARALLAX_DEPTH_FACTOR } from '../constants'
-import { extend } from '@pixi/react'
 import { Container, Sprite } from 'pixi.js'
+
+import { extend } from '@pixi/react'
+import { TooltipPlanet } from '@ui-pixi'
+
+import { PARALLAX_DEPTH_FACTOR } from '../constants'
 import { useSpaceStore } from '../store'
+import { getRandomStarTexture } from '../utils'
+import { PlanetItemProps } from './types'
 
 const RADIUS = 1
 

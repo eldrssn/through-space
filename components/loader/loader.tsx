@@ -1,7 +1,9 @@
 import { FC, useEffect, useRef } from 'react'
-import { LoaderProps } from './types'
-import * as S from './loader.styled'
+
 import { gsap } from 'gsap'
+
+import * as S from './loader.styled'
+import { LoaderProps } from './types'
 
 export const Loader: FC<LoaderProps> = ({ progress }) => {
   const progressTextRef = useRef<HTMLDivElement>(null)

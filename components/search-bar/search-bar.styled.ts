@@ -1,5 +1,6 @@
-import { Breakpoints, Colors } from '@tokens'
 import styled, { css } from 'styled-components'
+
+import { Breakpoints, Colors } from '@tokens'
 
 export const SearchContainer = styled.form`
   width: 291rem;
