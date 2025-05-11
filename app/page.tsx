@@ -1,18 +1,7 @@
 'use client'
 
-// import { useEffect, useState } from 'react'
-
-// import {} from // Content,
-// Loader
-// '@/components'
-// import { useGetPlanets } from '@/hooks'
-// import { preloadTextures } from '@/modules/space/utils'
-// import {} from // AnimatedPlanets,
-// Space
-// '@modules'
-import { Header } from '@/components/content/content.styled'
-
 import * as S from './styled'
+import { Content } from '@/components'
 
 export default function Home() {
   // const [loadingProgress, setLoadingProgress] = useState(0)
@@ -47,9 +36,9 @@ export default function Home() {
   return (
     <>
       <S.Main>
-        <Header> Together Through the&nbsp;Space</Header>
+        {/* <Header> Together Through the&nbsp;Space</Header> */}
         {/* <AnimatedPlanets /> */}
-        {/* <Content /> */}
+        <Content />
         {/* {isAssetsLoaded && <Space />} */}
       </S.Main>
       {/* {(showLoader || !planesList || isLoading || !isAssetsLoaded) && <Loader progress={loadingProgress} />} */}

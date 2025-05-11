@@ -8,6 +8,8 @@ import * as S from './content.styled'
 
 export const Content: FC = () => {
   const scrollToSpace = () => {
+    if (typeof document === 'undefined') return
+
     const spaceBox = document.querySelector('#space') as HTMLElement
 
     if (!spaceBox) return
@@ -29,5 +31,3 @@ export const Content: FC = () => {
     </S.Wrapper>
   )
 }
-
-export default Content
