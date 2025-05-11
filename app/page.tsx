@@ -1,6 +1,7 @@
 'use client'
 
 import { Content } from '@/components'
+import { AnimatedPlanets } from '@/modules'
 
 import * as S from './styled'
 
@@ -38,7 +39,7 @@ export default function Home() {
     <>
       <S.Main>
         {/* <Header> Together Through the&nbsp;Space</Header> */}
-        {/* <AnimatedPlanets /> */}
+        <AnimatedPlanets />
         <Content />
         {/* {isAssetsLoaded && <Space />} */}
       </S.Main>

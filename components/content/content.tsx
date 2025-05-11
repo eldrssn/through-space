@@ -5,7 +5,6 @@ import { FC } from 'react'
 import dynamic from 'next/dynamic'
 
 import * as S from './content.styled'
-// import { ButtonDown } from '@/ui-kit'
 
 const ButtonDown = dynamic(() => import('@/ui-kit').then((mod) => mod.ButtonDown), { ssr: false })
 
