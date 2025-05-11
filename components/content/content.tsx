@@ -2,19 +2,18 @@
 
 import { FC } from 'react'
 
-import { ButtonDown } from '@/ui-kit'
-
 import * as S from './content.styled'
+// import { ButtonDown } from '@/ui-kit'
 
 export const Content: FC = () => {
-  const scrollToSpace = () => {
-    if (typeof document === 'undefined') return
+  // const scrollToSpace = () => {
+  //   if (typeof document === 'undefined') return
 
-    const spaceBox = document.querySelector('#space') as HTMLElement
+  //   const spaceBox = document.querySelector('#space') as HTMLElement
 
-    if (!spaceBox) return
-    spaceBox.scrollIntoView({ block: 'center', behavior: 'smooth' })
-  }
+  //   if (!spaceBox) return
+  //   spaceBox.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  // }
 
   return (
     <S.Wrapper>
@@ -26,7 +25,7 @@ export const Content: FC = () => {
           a&nbsp;new story
         </S.Description>
 
-        <ButtonDown onClick={scrollToSpace} />
+        {/* <ButtonDown onClick={scrollToSpace} /> */}
       </S.Conteiner>
     </S.Wrapper>
   )
