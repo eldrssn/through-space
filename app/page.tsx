@@ -5,7 +5,10 @@ import { useEffect, useState } from 'react'
 import { Content, Loader } from '@/components'
 import { useGetPlanets } from '@/hooks'
 import { preloadTextures } from '@/modules/space/utils'
-import { AnimatedPlanets, Space } from '@modules'
+import {
+  AnimatedPlanets,
+  // Space
+} from '@modules'
 
 import * as S from './styled'
 
@@ -44,7 +47,7 @@ export default function Home() {
       <S.Main>
         <AnimatedPlanets />
         <Content />
-        {isAssetsLoaded && <Space />}
+        {/* {isAssetsLoaded && <Space />} */}
       </S.Main>
       {(showLoader || !planesList || isLoading || !isAssetsLoaded) && <Loader progress={loadingProgress} />}
     </>
