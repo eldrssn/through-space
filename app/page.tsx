@@ -5,10 +5,10 @@
 // import { Content, Loader } from '@/components'
 // import { useGetPlanets } from '@/hooks'
 // import { preloadTextures } from '@/modules/space/utils'
-// import {
-//   AnimatedPlanets,
-//   // Space
-// } from '@modules'
+import {
+  AnimatedPlanets,
+  // Space
+} from '@modules'
 
 import * as S from './styled'
 
@@ -45,7 +45,7 @@ export default function Home() {
   return (
     <>
       <S.Main>
-        {/* <AnimatedPlanets /> */}
+        <AnimatedPlanets />
         {/* <Content /> */}
         {/* {isAssetsLoaded && <Space />} */}
       </S.Main>
