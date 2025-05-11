@@ -10,4 +10,7 @@ export const DownButton = styled.button`
   border: 2rem solid ${Colors.GREEN};
   border-radius: 100%;
   backdrop-filter: blur(4rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
