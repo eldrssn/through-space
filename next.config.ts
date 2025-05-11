@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   compiler: {
     styledComponents: {
-      ssr: true,
+      ssr: false,
       displayName: true,
     },
   },
