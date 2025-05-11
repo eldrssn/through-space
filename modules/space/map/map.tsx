@@ -88,7 +88,7 @@ export const Map: FC<MapProps> = ({ dimensions, planetsList, searchResult }) => 
   })
 
   useEffect(() => {
-    if (!document) return
+    if (typeof document === 'undefined') return
 
     const element = document.querySelector('#space-container') as HTMLElement
 

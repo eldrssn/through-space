@@ -8,7 +8,7 @@ export const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
 
   useEffect(() => {
-    if (!document) return
+    if (typeof window === 'undefined' || typeof document === 'undefined') return
 
     if (isMobile === null) {
       setIsMobile(document.body.clientWidth < Breakpoints.DESKTOP)

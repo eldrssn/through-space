@@ -1,3 +1,5 @@
+'use client'
+
 import { FC, useEffect, useRef, useState } from 'react'
 
 import { clearAllBodyScrollLocks } from 'body-scroll-lock'
@@ -19,6 +21,8 @@ export const PopupLayout: FC<PopupProps> = ({ onClose, opened, children, mounted
   useEffect(() => {
     setAnimationIn(opened)
 
+    if (typeof window === 'undefined' || typeof document === 'undefined') return
+
     if (!targetRef.current) return
 
     if (opened) {
@@ -36,7 +40,8 @@ export const PopupLayout: FC<PopupProps> = ({ onClose, opened, children, mounted
   }, [opened])
 
   useEffect(() => {
-    if (!document) return
+    if (typeof document === 'undefined') return
+
     const handleFullscreenChange = () => {
       const isFullscreen =
         document.fullscreenElement ||

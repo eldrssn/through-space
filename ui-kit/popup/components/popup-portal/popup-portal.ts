@@ -10,7 +10,7 @@ export const PopupPortal: FC<PropsWithChildren> = ({ children }) => {
   const [container, setContainer] = useState<HTMLElement | null>(null)
 
   useEffect(() => {
-    if (!document) return
+    if (typeof document === 'undefined') return
 
     setContainer(document.getElementById(POPUPS_CONTAINER_ID))
   }, [])

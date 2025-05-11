@@ -15,7 +15,8 @@ export const useWindowDimensions = () => {
   })
 
   useEffect(() => {
-    if (!document) return
+    if (typeof window === 'undefined' || typeof document === 'undefined') return
+
     const fontSize = parseFloat(getComputedStyle(document.body).fontSize)
     const updateDimensions = () => {
       setDimensions({
