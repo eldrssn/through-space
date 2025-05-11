@@ -2,17 +2,17 @@
 
 // import { useEffect, useState } from 'react'
 
-import {} from // Content,
+// import {} from // Content,
 // Loader
-'@/components'
+// '@/components'
 // import { useGetPlanets } from '@/hooks'
 // import { preloadTextures } from '@/modules/space/utils'
-import {} from // AnimatedPlanets,
+// import {} from // AnimatedPlanets,
 // Space
-'@modules'
+// '@modules'
+import { Header } from '@/components/content/content.styled'
 
 import * as S from './styled'
-import { Header } from '@/components/content/content.styled'
 
 export default function Home() {
   // const [loadingProgress, setLoadingProgress] = useState(0)
