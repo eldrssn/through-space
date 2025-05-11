@@ -2,13 +2,15 @@
 
 // import { useEffect, useState } from 'react'
 
-// import { Content, Loader } from '@/components'
+import {
+  Content,
+  // Loader
+} from '@/components'
 // import { useGetPlanets } from '@/hooks'
 // import { preloadTextures } from '@/modules/space/utils'
-import {
-  AnimatedPlanets,
-  // Space
-} from '@modules'
+import {} from // AnimatedPlanets,
+// Space
+'@modules'
 
 import * as S from './styled'
 
@@ -45,8 +47,8 @@ export default function Home() {
   return (
     <>
       <S.Main>
-        <AnimatedPlanets />
-        {/* <Content /> */}
+        {/* <AnimatedPlanets /> */}
+        <Content />
         {/* {isAssetsLoaded && <Space />} */}
       </S.Main>
       {/* {(showLoader || !planesList || isLoading || !isAssetsLoaded) && <Loader progress={loadingProgress} />} */}
