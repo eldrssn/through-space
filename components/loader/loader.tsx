@@ -9,10 +9,9 @@ export const Loader: FC<LoaderProps> = ({ progress }) => {
   const progressTextRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (progress > 0) {
+    if (progress >= 0) {
       gsap.to(progressTextRef.current, {
         innerText: progress,
-
         ease: 'power2.out',
         snap: { innerText: 1 },
       })

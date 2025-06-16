@@ -4,66 +4,19 @@ import { Assets, Texture } from 'pixi.js'
 
 import { IPlanetItem } from '@/models'
 
-import { HEIGHT, MAX_SCALE, PARALLAX_DEPTH_FACTOR, WIDTH } from './constants'
+import { BACKGROUND_ASSETS, INTERACTIVE_PLANTS_ASSETS, PARALLAX_DEPTH_FACTOR, TOOLTIP_IMG } from './constants'
 import { PositionType } from './types'
-
-const names = ['Альфа', 'Бета', 'Гамма', 'Дельта', 'Эпсилон', 'Дзета', 'Эта', 'Тета']
 
 export const sortingPlanets = (planets: IPlanetItem[]) => [...planets].sort((a, b) => a.z - b.z)
 
-export const generateMockPlanets = (PLANET_COUNT: number): IPlanetItem[] => {
-  const planets: IPlanetItem[] = Array.from({ length: PLANET_COUNT }).map((_, i) => ({
-    // Диапазон X: от -WIDTH/2 до +WIDTH/2
-    x: (Math.random() - 0.5) * WIDTH,
-
-    // Диапазон Y: от -HEIGHT/2 до +HEIGHT/2
-    y: (Math.random() - 0.5) * HEIGHT,
-
-    // Z остаётся в [0, MAX_SCALE] для параллакса
-    z: Math.random() * MAX_SCALE,
-    compressed_image_path: '',
-    image_path: '',
-
-    radius: 4,
-    planet_name: names[i % names.length] + '-' + (i + 1),
-    id: String(i),
-    author: 'Имя пользователя',
-  }))
-
-  return sortingPlanets(planets)
-}
-
-const STAR_IMAGES = [
-  '/images/map-planets/planet-1.png',
-  '/images/map-planets/planet-2.png',
-  '/images/map-planets/planet-3.png',
-  '/images/map-planets/planet-4.png',
-  '/images/map-planets/planet-5.png',
-  '/images/map-planets/planet-6.png',
-  '/images/map-planets/planet-7.png',
-  '/images/map-planets/planet-8.png',
-  '/images/map-planets/planet-9.png',
-]
-
-const ASSETS_IMAGES = [
-  '/images/animated-planets/planet-1.png',
-  '/images/animated-planets/planet-2.png',
-  '/images/animated-planets/planet-3.png',
-  '/images/animated-planets/planet-4.png',
-  '/images/animated-planets/planet-5.png',
-  '/images/animated-planets/sputnik.png',
-]
-
-const TOOLTIP_IMG = '/images/animated-planets/tooltip.png'
-
-// Кэш для текстур звезд
 export const starTextures: PIXI.Texture[] = []
 export const assetsTextures: PIXI.Texture[] = []
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export let extraTextures: Record<string, PIXI.Texture<PIXI.TextureSource<any>>> = {}
 
 export const preloadTextures = async (onProgress?: (progress: number) => void): Promise<void> => {
-  const starResources: Record<string, string> = STAR_IMAGES.reduce(
+  const starResources: Record<string, string> = INTERACTIVE_PLANTS_ASSETS.reduce(
     (acc, path, index) => {
       acc[`star-${index}`] = path
       return acc
@@ -71,7 +24,7 @@ export const preloadTextures = async (onProgress?: (progress: number) => void): 
     {} as Record<string, string>
   )
 
-  const assetsTextures: Record<string, string> = ASSETS_IMAGES.reduce(
+  const assetsTextures: Record<string, string> = BACKGROUND_ASSETS.reduce(
     (acc, path, index) => {
       acc[`assets-${index}`] = path
       return acc
@@ -107,14 +60,11 @@ export const preloadTextures = async (onProgress?: (progress: number) => void): 
   extraTextures = extras
 }
 
-// Функция для получения случайной текстуры звезды из предзагруженных
 export const getRandomStarTexture = (): PIXI.Texture => {
-  // Если текстуры еще не загружены, возвращаем пустую текстуру
   if (starTextures.length === 0) {
     return PIXI.Texture.EMPTY
   }
 
-  // Выбираем случайную текстуру из массива
   const randomIndex = Math.floor(Math.random() * starTextures.length)
   return starTextures[randomIndex]
 }
@@ -153,25 +103,15 @@ export const createTweenMap = ({
     }
   )
 
-/**
- * Фильтрует планеты, чтобы отображать только те, которые видны в текущем вьюпорте
- * @param planetsList - Полный список всех планет
- * @param position - Текущая позиция вьюпорта (центр экрана)
- * @param scale - Текущий масштаб
- * @param bufferSize - Дополнительная буферная зона вокруг вьюпорта в пикселях (по умолчанию: 300)
- * @returns Массив планет, которые видимы в текущем вьюпорте
- */
-export const getVisiblePlanets = (
+export const getVirtualizedPlanets = (
   planetsList: IPlanetItem[],
   position: PositionType,
   scale: number,
   bufferSize: number = 100
 ): IPlanetItem[] => {
-  // Получаем размеры вьюпорта
   const viewportWidth = window.innerWidth
   const viewportHeight = window.innerHeight
 
-  // Буфер в мировых координатах
   const buffer = bufferSize / scale
 
   const viewportLeft = -position.x / scale
@@ -182,11 +122,9 @@ export const getVisiblePlanets = (
   return planetsList.filter((planet) => {
     const parallaxFactor = planet.z * PARALLAX_DEPTH_FACTOR
 
-    // Calculate parallax-adjusted position
     const parallaxX = planet.x + position.x * parallaxFactor
     const parallaxY = planet.y + position.y * parallaxFactor
 
-    // Check if the planet is within the viewport (with buffer)
     return (
       parallaxX >= viewportLeft - buffer &&
       parallaxX <= viewportRight + buffer &&

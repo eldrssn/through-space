@@ -4,6 +4,7 @@ import { FC, useState } from 'react'
 
 import { IPlanetItem } from '@/models'
 import { useDebounce, useGetPlanetByName } from '@hooks'
+import CrossSvg from '@images/cross.svg'
 
 import * as S from './search-bar.styled'
 import { SearchBarProps } from './types'
@@ -45,7 +46,7 @@ export const SearchBar: FC<SearchBarProps> = ({ setSelectedPlanet }) => {
       />
 
       <S.ClearButton type="button" $visible={!!searchTerm} onClick={handleClearSearchTerm}>
-        x
+        <CrossSvg />
       </S.ClearButton>
 
       <S.ErrorMessage $visible={isErrorMessageVisible}>Planet not found, try again.</S.ErrorMessage>

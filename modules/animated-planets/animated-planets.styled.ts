@@ -19,12 +19,14 @@ const rotate = keyframes`
     transform: rotate(360deg);
   }
 `
-
-export const Planet1 = styled.div`
+const Planet = styled.div`
   position: absolute;
   bottom: 0;
   left: 50%;
   translate: -50% 50%;
+`
+
+export const Planet1 = styled(Planet)`
   rotate: -10deg;
   width: 41rem;
   height: 41rem;
@@ -37,11 +39,7 @@ export const Planet1 = styled.div`
   }
 `
 
-export const Planet2 = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  translate: -50% 50%;
+export const Planet2 = styled(Planet)`
   width: 90rem;
   height: 90rem;
   background: ${`url("${planetSvg2}") center no-repeat`};
@@ -53,11 +51,7 @@ export const Planet2 = styled.div`
     height: 26rem;
   }
 `
-export const Planet3 = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  translate: -50% 50%;
+export const Planet3 = styled(Planet)`
   width: 179rem;
   height: 179rem;
   rotate: -10deg;
@@ -71,11 +65,7 @@ export const Planet3 = styled.div`
   }
 `
 
-export const Planet4 = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  translate: -50% 50%;
+export const Planet4 = styled(Planet)`
   width: 133rem;
   height: 133rem;
   background: ${`url("${planetSvg4}") center no-repeat`};
@@ -88,11 +78,7 @@ export const Planet4 = styled.div`
   }
 `
 
-export const Planet5 = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  translate: -50% 50%;
+export const Planet5 = styled(Planet)`
   width: 254rem;
   height: 254rem;
   background: ${`url("${planetSvg5}") center no-repeat`};
@@ -233,7 +219,6 @@ export const Spitnik = styled.span`
 
 export const SputnikBox1 = styled(SputnikBox)`
   animation: ${rotate} 35s linear infinite;
-  /* animation-direction: reverse; */
 `
 export const Spitnik1 = styled(Spitnik)``
 
@@ -260,7 +245,6 @@ export const Spitnik2 = styled(Spitnik)`
 `
 
 export const SputnikBox3 = styled(SputnikBox)`
-  bottom: 0;
   right: 50%;
   left: unset;
   animation: ${rotate} 30s linear infinite;
@@ -287,7 +271,6 @@ export const Spitnik3 = styled(Spitnik)`
 `
 
 export const SputnikBox4 = styled(SputnikBox)`
-  bottom: 0;
   right: 50%;
   left: unset;
   bottom: unset;

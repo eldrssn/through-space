@@ -62,10 +62,6 @@ export const ClearButton = styled.button<{ $visible: boolean }>`
   height: 20rem;
   box-shadow: 0 2rem 12rem 0 rgba(30, 238, 174, 0.55);
   background: ${Colors.GREEN};
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 12rem;
-  color: #1b1f22;
   padding: 0;
 
   &:hover {

@@ -16,7 +16,6 @@ export const AnimatedPlanets: FC = () => {
       <S.OrbitBox3>
         <S.Orbit />
         <S.Planet4 />
-
         <S.SputnikBox2>
           <S.Spitnik2 />
         </S.SputnikBox2>
@@ -29,7 +28,6 @@ export const AnimatedPlanets: FC = () => {
       </S.OrbitBox3>
       <S.OrbitBox4>
         <S.Orbit />
-
         <S.Planet3 />
         <S.SputnikBox1>
           <S.Spitnik1 />

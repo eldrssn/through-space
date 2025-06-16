@@ -8,7 +8,7 @@ import { useIsMobile } from '@hooks'
 import { extend } from '@pixi/react'
 
 import { PlanetItem } from '../planet-item'
-import { getVisiblePlanets } from '../utils'
+import { getVirtualizedPlanets } from '../utils'
 import { PlanetsContainerProps } from './types'
 
 extend({
@@ -26,7 +26,7 @@ export const PlanetsContainer: FC<PlanetsContainerProps> = ({
 }) => {
   const isMobile = useIsMobile()
   const visiblePlanets = useMemo(
-    () => getVisiblePlanets(planetsList, position, scale, isMobile ? 100 : 200),
+    () => getVirtualizedPlanets(planetsList, position, scale, isMobile ? 100 : 200),
     [planetsList, position, scale]
   )
 

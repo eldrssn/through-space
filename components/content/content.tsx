@@ -10,12 +10,8 @@ const ButtonDown = dynamic(() => import('@/ui-kit').then((mod) => mod.ButtonDown
 
 export const Content: FC = () => {
   const scrollToSpace = () => {
-    if (typeof document === 'undefined') return
-
-    const spaceBox = document.querySelector('#space') as HTMLElement
-
-    if (!spaceBox) return
-    spaceBox.scrollIntoView({ block: 'center', behavior: 'smooth' })
+    const spaceBox = document?.querySelector('#space') as HTMLElement
+    spaceBox?.scrollIntoView({ block: 'center', behavior: 'smooth' })
   }
 
   return (
