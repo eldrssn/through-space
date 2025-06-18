@@ -42,6 +42,8 @@ export default function Home() {
   return (
     <>
       <S.Main>
+        <S.ImageBackground src={'/images/bg.svg'} alt="background" fill />
+
         <AnimatedPlanets />
         <Content />
         {isAssetsLoaded && <Space />}

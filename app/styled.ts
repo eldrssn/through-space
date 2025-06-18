@@ -1,14 +1,17 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 
 import { Breakpoints } from '@tokens'
 
-const bg = '/images/bg.svg'
+const stars = '/images/stars.svg'
+
 const sun = '/images/sun.png'
 const noise = '/images/noise.png'
 
 export const Main = styled.main`
-  background: ${`url("${bg}") center no-repeat`};
-  background-size: cover;
+  background: ${`url("${stars}") center repeat`};
+  background-size: contain;
+
   display: flex;
   flex-direction: column;
   position: relative;
@@ -42,13 +45,18 @@ export const Main = styled.main`
   }
 
   @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
-    background: ${`url("${bg}") top no-repeat`};
-    background-size: cover;
-
     &::after {
       width: 300rem;
       height: 300rem;
       top: 320rem;
     }
+  }
+`
+
+export const ImageBackground = styled(Image)`
+  filter: blur(15px);
+
+  @media screen and (max-width: ${Breakpoints.DESKTOP}px) {
+    object-fit: cover;
   }
 `
