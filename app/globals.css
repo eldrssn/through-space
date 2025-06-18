@@ -1,154 +1,4 @@
 @font-face {
-  font-family: 'Druk Text Cyr';
-  src:
-    url('/fonts/DrukTextCyr-Medium.woff2') format('woff2'),
-    url('/fonts/DrukTextCyr-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Druk Text Cyr';
-  src:
-    url('/fonts/DrukTextCyr-MediumItalic.woff2') format('woff2'),
-    url('/fonts/DrukTextCyr-MediumItalic.woff') format('woff');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Druk Text Cyr';
-  src:
-    url('/fonts/DrukTextCyr-BoldItalic.woff2') format('woff2'),
-    url('/fonts/DrukTextCyr-BoldItalic.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Druk Text Cyr';
-  src:
-    url('/fonts/DrukTextCyr-HeavyItalic.woff2') format('woff2'),
-    url('/fonts/DrukTextCyr-HeavyItalic.woff') format('woff');
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SB Sans Display';
-  src:
-    url('/fonts/SBSansDisplay-Regular.woff2') format('woff2'),
-    url('/fonts/SBSansDisplay-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SB Sans Display';
-  src:
-    url('/fonts/SBSansDisplay-Bold.woff2') format('woff2'),
-    url('/fonts/SBSansDisplay-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Druk Text Wide Cyr';
-  src:
-    url('/fonts/DrukTextWideCyr-BoldItalic.woff2') format('woff2'),
-    url('/fonts/DrukTextWideCyr-BoldItalic.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Druk Text Wide Cyr';
-  src:
-    url('/fonts/DrukTextWideCyr-Bold.woff2') format('woff2'),
-    url('/fonts/DrukTextWideCyr-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SB Sans Display';
-  src:
-    url('/fonts/SBSansDisplay-Semibold.woff2') format('woff2'),
-    url('/fonts/SBSansDisplay-Semibold.woff') format('woff');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Druk Text Cyr';
-  src:
-    url('/fonts/DrukTextCyr-Heavy.woff2') format('woff2'),
-    url('/fonts/DrukTextCyr-Heavy.woff') format('woff');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Druk Text Cyr';
-  src:
-    url('/fonts/DrukTextCyr-Bold.woff2') format('woff2'),
-    url('/fonts/DrukTextCyr-Bold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Druk Text Wide Cyr';
-  src:
-    url('/fonts/DrukTextWideCyr-HeavyItalic.woff2') format('woff2'),
-    url('/fonts/DrukTextWideCyr-HeavyItalic.woff') format('woff');
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Druk Text Wide Cyr';
-  src:
-    url('/fonts/DrukTextWideCyr-MediumItalic.woff2') format('woff2'),
-    url('/fonts/DrukTextWideCyr-MediumItalic.woff') format('woff');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Druk Text Wide Cyr';
-  src:
-    url('/fonts/DrukTextWideCyr-Medium.woff2') format('woff2'),
-    url('/fonts/DrukTextWideCyr-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Druk Text Wide Cyr';
-  src:
-    url('/fonts/DrukTextWideCyr-Heavy.woff2') format('woff2'),
-    url('/fonts/DrukTextWideCyr-Heavy.woff') format('woff');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'Yulong';
   src:
     url('/fonts/Yulong-Regular.woff2') format('woff2'),
@@ -201,7 +51,6 @@ body {
   font-weight: 500;
   line-height: 1;
   max-width: 100vw;
-  /*min-height: 100%;*/
   color: #000;
   background: #121517;
 }
@@ -254,13 +103,6 @@ button:focus,
 button:focus-visible {
   outline: none;
 }
-
-/* #root {
-  height: calc(var(--vh, 1vh) * 100);
-  position: relative;
-  max-width: 100vw;
-  scroll-behavior: smooth;
-} */
 
 #root.no-scroll {
   overflow: hidden;
