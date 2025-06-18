@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic'
 import { SearchBar } from '@components'
 import { useGetPlanets } from '@hooks'
 
-import { useWindowDimensions } from './hooks'
 import { MapWrapper, SpaceContainer } from './space.styled'
 import { useSpaceStore } from './store'
 
@@ -16,7 +15,6 @@ const Map = dynamic(() => import('./map'), {
 })
 
 export const Space = () => {
-  const { dimensions } = useWindowDimensions()
   const { selectedPlanet, setSelectedPlanet } = useSpaceStore()
   const { planets: planetsList } = useGetPlanets()
 
@@ -24,9 +22,7 @@ export const Space = () => {
     <SpaceContainer id="space">
       <SearchBar setSelectedPlanet={setSelectedPlanet} />
       <MapWrapper>
-        <Suspense>
-          {planetsList && <Map dimensions={dimensions} planetsList={planetsList} searchResult={selectedPlanet} />}
-        </Suspense>
+        <Suspense>{planetsList && <Map planetsList={planetsList} searchResult={selectedPlanet} />}</Suspense>
       </MapWrapper>
     </SpaceContainer>
   )

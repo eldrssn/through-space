@@ -21,16 +21,16 @@ extend({
   Sprite,
 })
 
-export const Map: FC<MapProps> = ({ dimensions, planetsList, searchResult }) => {
+export const Map: FC<MapProps> = ({ planetsList, searchResult }) => {
   const initialPosition = useMemo(
     () => ({
-      x: dimensions.width / 2,
-      y: dimensions.height / 2,
+      x: window?.innerWidth / 2,
+      y: window?.innerWidth / 2,
     }),
-    [dimensions]
+    []
   )
 
-  const [position, setPosition] = useState<PositionType>({ x: 900, y: 900 })
+  const [position, setPosition] = useState<PositionType>(initialPosition)
   const [scale, setScale] = useState(DEFAULT_SCALE)
 
   const scaleRef = useRef(DEFAULT_SCALE)
@@ -73,11 +73,11 @@ export const Map: FC<MapProps> = ({ dimensions, planetsList, searchResult }) => 
   }
 
   const handleZoomIn = useCallback(() => {
-    animateZoomToPoint(dimensions.width / 2, dimensions.height / 2, scaleRef.current * 1.2)
+    animateZoomToPoint(initialPosition.x, initialPosition.y, scaleRef.current * 1.2)
   }, [animateZoomToPoint])
 
   const handleZoomOut = useCallback(() => {
-    animateZoomToPoint(dimensions.width / 2, dimensions.height / 2, scaleRef.current / 1.2)
+    animateZoomToPoint(initialPosition.x, initialPosition.y, scaleRef.current / 1.2)
   }, [animateZoomToPoint])
 
   const { handleTouchStart, handleTouchMove, handleTouchEnd, handleTouchEndForDoubleTap } = useTouch({
@@ -90,7 +90,7 @@ export const Map: FC<MapProps> = ({ dimensions, planetsList, searchResult }) => 
   useEffect(() => {
     if (typeof document === 'undefined') return
 
-    const element = document.querySelector('#space-container') as HTMLElement
+    const element = document?.querySelector('#space-container') as HTMLElement
 
     if (element) {
       element.addEventListener('touchstart', handleTouchStart, { passive: false })
@@ -118,9 +118,10 @@ export const Map: FC<MapProps> = ({ dimensions, planetsList, searchResult }) => 
     const targetScale = MAX_GOBAL_SCALE - 2
 
     const parallaxFactor = planet.z * PARALLAX_DEPTH_FACTOR
+    const { innerHeight, innerWidth } = window
 
-    const targetX = (dimensions.width / 2 - planet.x * targetScale) / (1 + parallaxFactor * targetScale)
-    const targetY = (dimensions.height / 2 - planet.y * targetScale) / (1 + parallaxFactor * targetScale)
+    const targetX = (innerWidth / 2 - planet.x * targetScale) / (1 + parallaxFactor * targetScale)
+    const targetY = (innerHeight / 2 - planet.y * targetScale) / (1 + parallaxFactor * targetScale)
 
     gsap.to(
       { x: position.x, y: position.y, scale: scale },
@@ -141,7 +142,7 @@ export const Map: FC<MapProps> = ({ dimensions, planetsList, searchResult }) => 
   return (
     <>
       <div id="space-container">
-        <Application width={dimensions.width} height={dimensions.height} backgroundAlpha={0}>
+        <Application backgroundAlpha={0} resizeTo={window}>
           <pixiGraphics
             draw={drawBackground}
             eventMode="static"
