@@ -1,9 +1,11 @@
 'use client'
 
-import React, { FC, useRef } from 'react'
+import { FC, useRef } from 'react'
+
 import Lottie, { LottieRefCurrentProps } from 'lottie-react'
 
 import arrowDownData from '@app/assets/lottie/arrow-down.json'
+
 import * as S from './button-down.styled'
 import { ButtonDownProps } from './types'
 

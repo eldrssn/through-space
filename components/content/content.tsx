@@ -2,17 +2,13 @@
 
 import { FC } from 'react'
 
-import dynamic from 'next/dynamic'
+import { scrollTo } from '@/lib'
+import { ButtonDown } from '@/ui-kit'
 
 import * as S from './content.styled'
 
-const ButtonDown = dynamic(() => import('@/ui-kit').then((mod) => mod.ButtonDown), { ssr: false })
-
 export const Content: FC = () => {
-  const scrollToSpace = () => {
-    const spaceBox = document?.querySelector('#space') as HTMLElement
-    spaceBox?.scrollIntoView({ block: 'center', behavior: 'smooth' })
-  }
+  const scrollToSpace = () => scrollTo('#space')
 
   return (
     <S.Wrapper>
