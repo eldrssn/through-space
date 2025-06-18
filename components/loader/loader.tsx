@@ -5,7 +5,7 @@ import { gsap } from 'gsap'
 import * as S from './loader.styled'
 import { LoaderProps } from './types'
 
-export const Loader: FC<LoaderProps> = ({ progress }) => {
+export const Loader: FC<LoaderProps> = ({ progress, isLoadingCompleted }) => {
   const progressTextRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export const Loader: FC<LoaderProps> = ({ progress }) => {
   }, [progress])
 
   return (
-    <S.LoaderWrapper>
+    <S.LoaderWrapper $hidden={isLoadingCompleted}>
       <S.OrbitBox1>
         <S.Orbit />
         <S.Planet1 />

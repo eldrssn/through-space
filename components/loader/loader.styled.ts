@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
 import OrgbitSvg from '@images/animated-planets/orbit.svg'
 
@@ -15,7 +15,20 @@ const rotate = keyframes`
   }
 `
 
-export const LoaderWrapper = styled.div`
+const fadeOut = keyframes`
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+`
+
+export const LoaderWrapper = styled.div<{ $hidden: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -26,6 +39,12 @@ export const LoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${({ $hidden }) =>
+    $hidden &&
+    css`
+      animation: ${fadeOut} 1s linear forwards;
+    `}
 `
 
 export const Orbit = styled(OrgbitSvg)`
